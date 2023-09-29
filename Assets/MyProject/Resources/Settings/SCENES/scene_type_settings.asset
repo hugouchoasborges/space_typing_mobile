@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9529c7d59f035848aa1424e990b1f03, type: 3}
+  m_Name: scene_type_settings
+  m_EditorClassIdentifier: 
+  enumTypes:
+  - NONE
+  - INITIALIZATION
+  - APPLICATION
+  - GAME
+  - MAIN_MENU
+  - PAUSE_MENU
+  cachedEnumTypes:
+  - Name: NONE
+    Count: 3
+    Enabled: 1
+  - Name: INITIALIZATION
+    Count: 4
+    Enabled: 1
+  - Name: APPLICATION
+    Count: 0
+    Enabled: 1
+  - Name: GAME
+    Count: 1
+    Enabled: 1
+  - Name: MAIN_MENU
+    Count: 2
+    Enabled: 1
+  - Name: PAUSE_MENU
+    Count: 5
+    Enabled: 1
+  EnumScript: {fileID: 11500000, guid: bc9cc8a5f9121b2479f9cd51f3ac94bb, type: 3}
+  _entries:
+  - SceneType: APPLICATION
+    Scene: Assets/MyProject/Scenes/Application.unity
+  - SceneType: GAME
+    Scene: Assets/MyProject/Scenes/Game.unity
+  - SceneType: MAIN_MENU
+    Scene: Assets/MyProject/Scenes/MainMenu.unity
+  - SceneType: NONE
+    Scene: 
+  - SceneType: INITIALIZATION
+    Scene: Assets/MyProject/Scenes/Initialization.unity
+  - SceneType: PAUSE_MENU
+    Scene: Assets/MyProject/Scenes/PauseMenu.unity

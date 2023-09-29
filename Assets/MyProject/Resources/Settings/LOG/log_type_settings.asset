@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d64ab8c4cb101240b3a04bf627c85ed, type: 3}
+  m_Name: log_type_settings
+  m_EditorClassIdentifier: 
+  enumTypes:
+  - FSM_DISPATCH_EVENT
+  - FSM_STATE_TRANSITION
+  - FSM_RECEIVE_EVENT
+  - NONE
+  - BUILD
+  - SCENE
+  cachedEnumTypes:
+  - Name: FSM_DISPATCH_EVENT
+    Count: 0
+    Enabled: 1
+  - Name: FSM_STATE_TRANSITION
+    Count: 1
+    Enabled: 1
+  - Name: FSM_RECEIVE_EVENT
+    Count: 2
+    Enabled: 1
+  - Name: NONE
+    Count: 3
+    Enabled: 1
+  - Name: BUILD
+    Count: 4
+    Enabled: 1
+  - Name: SCENE
+    Count: 5
+    Enabled: 1
+  EnumScript: {fileID: 11500000, guid: 78b9aa1882d19a04ca59ceb9cc1d3299, type: 3}
+  _entries:
+  - LogType: FSM_DISPATCH_EVENT
+    Enabled: 0
+  - LogType: FSM_STATE_TRANSITION
+    Enabled: 0
+  - LogType: FSM_RECEIVE_EVENT
+    Enabled: 0
+  - LogType: NONE
+    Enabled: 0
+  - LogType: BUILD
+    Enabled: 1
