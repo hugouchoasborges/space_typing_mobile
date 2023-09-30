@@ -37,7 +37,7 @@ namespace log.settings
             MenuExtensions.PingOrCreateSO<ELogSettingsSO>(Path.Combine(CONFIG_FILE_ROOT, CONFIG_FILE_PATH));
         }
 
-        [MenuItem("MyProject/LOG/Type Settings")]
+        [MenuItem("MyProject/LOG/Type Settings ^#L")]
         public static void MenuItem_LogTypeSettings()
         {
             MenuExtensions.PingOrCreateSO<ELogTypeSettingsSO>(Path.Combine(CONFIG_FILE_ROOT, CONFIG_FILE_TYPES));

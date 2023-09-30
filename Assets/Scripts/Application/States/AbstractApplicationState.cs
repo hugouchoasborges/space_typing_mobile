@@ -1,4 +1,4 @@
-﻿using fsm;
+﻿using myproject.fsm;
 using UnityEngine;
 
 namespace application

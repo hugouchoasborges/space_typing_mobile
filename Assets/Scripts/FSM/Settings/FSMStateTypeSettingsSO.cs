@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using tools;
 
-namespace fsm.settings
+namespace myproject.fsm.settings
 {
     class FSMStateTypeSettingsSO : CustomEnumSO
     {

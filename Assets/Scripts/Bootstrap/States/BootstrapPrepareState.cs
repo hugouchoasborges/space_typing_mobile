@@ -1,4 +1,4 @@
-﻿using fsm;
+﻿using myproject.fsm;
 
 namespace bootstrap
 {

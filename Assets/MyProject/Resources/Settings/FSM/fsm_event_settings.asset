@@ -14,8 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enumTypes:
   - NONE
+  - TOUCH_STARTED
+  - TOUCH_MOVED
+  - TOUCH_ENDED
+  - TOUCH_TAP
+  - APPLICATION_PAUSED
+  - APPLICATION_RESUMED
   cachedEnumTypes:
   - Name: NONE
     Count: 0
+    Enabled: 1
+  - Name: TOUCH_STARTED
+    Count: 1
+    Enabled: 1
+  - Name: TOUCH_MOVED
+    Count: 2
+    Enabled: 1
+  - Name: TOUCH_ENDED
+    Count: 3
+    Enabled: 1
+  - Name: TOUCH_TAP
+    Count: 4
+    Enabled: 1
+  - Name: APPLICATION_PAUSED
+    Count: 5
+    Enabled: 1
+  - Name: APPLICATION_RESUMED
+    Count: 6
     Enabled: 1
   EnumScript: {fileID: 11500000, guid: d26dcaf8c86161a45ab77c89bbf019a5, type: 3}
