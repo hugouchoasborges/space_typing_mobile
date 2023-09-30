@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System.Collections;
 using UnityEngine.TestTools;
 
-namespace emburradinho.tests.playmode
+namespace myproject.tests.playmode
 {
     public class Test_PlayMode_Example : Test_PlayMode_Abstract
     {

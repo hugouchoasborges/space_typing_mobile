@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace emburradinho.tests.playmode
+namespace myproject.tests.playmode
 {
     public abstract class Test_PlayMode_Abstract
     {

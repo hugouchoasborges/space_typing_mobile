@@ -7,7 +7,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace emburradinho.tests.editmode
+namespace myproject.tests.editmode
 {
     public abstract class Test_EditMode_Abstract
     {
