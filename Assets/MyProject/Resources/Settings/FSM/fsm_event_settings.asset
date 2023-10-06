@@ -20,6 +20,7 @@ MonoBehaviour:
   - TOUCH_TAP
   - APPLICATION_PAUSED
   - APPLICATION_RESUMED
+  - KEYBOARD_MOVED
   cachedEnumTypes:
   - Name: NONE
     Count: 0
@@ -41,5 +42,8 @@ MonoBehaviour:
     Enabled: 1
   - Name: APPLICATION_RESUMED
     Count: 6
+    Enabled: 1
+  - Name: KEYBOARD_MOVED
+    Count: 7
     Enabled: 1
   EnumScript: {fileID: 11500000, guid: d26dcaf8c86161a45ab77c89bbf019a5, type: 3}

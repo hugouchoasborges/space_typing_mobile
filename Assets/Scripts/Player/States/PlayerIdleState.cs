@@ -16,6 +16,11 @@ namespace myproject.player
                     TouchInputModel input = (TouchInputModel)data;
                     controller.Move(input.Delta);
                     break;
+
+                case FSMEventType.KEYBOARD_MOVED:
+                    KeyboardInputModel keyboardInput = (KeyboardInputModel)data;
+                    controller.Move(keyboardInput.Delta);
+                    break;
             }
         }
     }

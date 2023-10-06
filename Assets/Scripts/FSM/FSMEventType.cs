@@ -9,5 +9,6 @@ namespace myproject.fsm
 		TOUCH_TAP = 4,
 		APPLICATION_PAUSED = 5,
 		APPLICATION_RESUMED = 6,
+		KEYBOARD_MOVED = 7,
 }
 }

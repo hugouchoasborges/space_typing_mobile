@@ -476,7 +476,7 @@ MonoBehaviour:
   _statesSerialized:
   - EventType: 1
     State: {fileID: 1518184970}
-    AllowedEventTypes: 02000000
+    AllowedEventTypes: 0200000007000000
   allowedEventTypes: 
   _lastEventsReceivedIgnoreList: 
 --- !u!114 &1518184970

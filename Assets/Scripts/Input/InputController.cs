@@ -1,3 +1,7 @@
+#if UNITY_EDITOR || !UNITY_ANDROID
+#define HAS_KEYBOARD
+#endif
+
 using log;
 using myproject.core;
 using myproject.fsm;
@@ -23,15 +27,31 @@ namespace myproject.input
         [Range(0, .5f)]
         private float _maxTapDistance = .1f;
 
+        private KeyboardInputController _keyboardInput;
+
         private void Awake()
         {
+#if HAS_KEYBOARD
+            if (_keyboardInput == null)
+                _keyboardInput = gameObject.GetComponent<KeyboardInputController>()
+                    ?? gameObject.AddComponent<KeyboardInputController>();
+#endif
+
             SetPaused(true);
         }
 
         public void SetPaused(bool paused)
         {
             enabled = !paused;
+#if HAS_KEYBOARD
+            _keyboardInput.SetPaused(paused);
+#endif
         }
+
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Movement Input ============================
+        // ----------------------------------------------------------------------------------
 
         private void OnTouchStarted(Vector2 screenPosition)
         {
