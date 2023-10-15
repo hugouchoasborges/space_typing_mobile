@@ -8,5 +8,11 @@ namespace myproject.player
         {
             transform.position += (Vector3)delta;
         }
+
+        public void Shoot()
+        {
+            // MEDO: Create projectile
+
+        }
     }
 }

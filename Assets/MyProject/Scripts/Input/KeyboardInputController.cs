@@ -12,15 +12,16 @@ namespace myproject.input
         public Camera MainCamera => Locator.MainCamera;
 
         [Header("Fine Control")]
-        [SerializeField][Range(5, 50)] private float _movementMultiplier = 20f;
+        [SerializeField][Range(5, 50)] private float _movementMultiplier = 40f;
 
-        [Header("Inputs")]
-        [SerializeField] private KeyCode _left = KeyCode.LeftArrow;
-        [SerializeField] private KeyCode _right = KeyCode.RightArrow;
-        [SerializeField] private KeyCode _up = KeyCode.UpArrow;
-        [SerializeField] private KeyCode _down = KeyCode.DownArrow;
+        [Header("Input - Movement")]
+        [SerializeField] private KeyCode[] _leftKey = new KeyCode[] { KeyCode.LeftArrow, KeyCode.A };
+        [SerializeField] private KeyCode[] _rightKey = new KeyCode[] { KeyCode.RightArrow, KeyCode.D };
+        [SerializeField] private KeyCode[] _upKey = new KeyCode[] { KeyCode.UpArrow, KeyCode.W };
+        [SerializeField] private KeyCode[] _downKey = new KeyCode[] { KeyCode.DownArrow, KeyCode.S };
 
-        [SerializeField] private KeyCode _shoot;
+        [Header("Input - Action")]
+        [SerializeField] private KeyCode[] _shootKey = new KeyCode[] { KeyCode.Space };
 
 
         private void Awake()
@@ -38,18 +39,27 @@ namespace myproject.input
         // ========================== Movement ============================
         // ----------------------------------------------------------------------------------
 
+        private bool CheckKeyCodeArray(KeyCode[] keyArray)
+        {
+            foreach (var key in keyArray)
+                if (Input.GetKey(key))
+                    return true;
+
+            return false;
+        }
+
         private void CheckMovementInput()
         {
             float x = 0;
             float y = 0;
 
-            if (Input.GetKey(_left))
+            if (CheckKeyCodeArray(_leftKey))
                 x -= 1;
-            if (Input.GetKey(_right))
+            if (CheckKeyCodeArray(_rightKey))
                 x += 1;
-            if (Input.GetKey(_up))
+            if (CheckKeyCodeArray(_upKey))
                 y += 1;
-            if (Input.GetKey(_down))
+            if (CheckKeyCodeArray(_downKey))
                 y -= 1;
 
             if (x != 0 || y != 0)
@@ -67,7 +77,13 @@ namespace myproject.input
 
         private void CheckActionInput()
         {
+            if (CheckKeyCodeArray(_shootKey))
+                ActionShoot();
+        }
 
+        private void ActionShoot()
+        {
+            FSM.DispatchGameEvent(FSMControllerType.ALL, FSMStateType.ALL, FSMEventType.PLAYER_SHOOT);
         }
 
         // ----------------------------------------------------------------------------------

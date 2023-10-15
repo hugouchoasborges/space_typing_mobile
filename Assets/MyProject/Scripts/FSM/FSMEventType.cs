@@ -10,5 +10,6 @@ namespace myproject.fsm
 		APPLICATION_PAUSED = 5,
 		APPLICATION_RESUMED = 6,
 		KEYBOARD_MOVED = 7,
+		PLAYER_SHOOT = 8,
 }
 }

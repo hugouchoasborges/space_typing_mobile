@@ -136,7 +136,7 @@
             <key>datafile</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../Bundles/Atlas/main-textures.tpsheet</filename>
+                <filename>../Bundles/Atlas/main-textures.tpsheet</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -185,7 +185,22 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">player/Player.PNG</key>
+            <key type="filename">Projectiles/projectiles/base-projectile.PNG</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>32,32,64,64</rect>
+                <key>scale9Paddings</key>
+                <rect>32,32,64,64</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/player/Player.PNG</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -204,6 +219,7 @@
         <key>fileList</key>
         <array>
             <filename>player</filename>
+            <filename>Projectiles</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

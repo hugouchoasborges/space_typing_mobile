@@ -22,9 +22,6 @@ MonoBehaviour:
   - PLAYER
   - TOUCH
   cachedEnumTypes:
-  - Name: LOG
-    Count: 7
-    Enabled: 0
   - Name: FSM_DISPATCH_EVENT
     Count: 0
     Enabled: 1
@@ -49,6 +46,9 @@ MonoBehaviour:
   - Name: TOUCH
     Count: 8
     Enabled: 1
+  - Name: LOG
+    Count: 7
+    Enabled: 0
   EnumScript: {fileID: 11500000, guid: 78b9aa1882d19a04ca59ceb9cc1d3299, type: 3}
   _entries:
   - LogType: FSM_DISPATCH_EVENT
@@ -64,6 +64,6 @@ MonoBehaviour:
   - LogType: SCENE
     Enabled: 0
   - LogType: PLAYER
-    Enabled: 1
+    Enabled: 0
   - LogType: TOUCH
-    Enabled: 1
+    Enabled: 0

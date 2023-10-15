@@ -21,6 +21,10 @@ namespace myproject.player
                     KeyboardInputModel keyboardInput = (KeyboardInputModel)data;
                     controller.Move(keyboardInput.Delta);
                     break;
+
+                case FSMEventType.PLAYER_SHOOT:
+                    controller.Shoot();
+                    break;
             }
         }
     }

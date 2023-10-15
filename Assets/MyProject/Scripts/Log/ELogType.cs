@@ -2,7 +2,6 @@ namespace log
 {
     public enum ELogType
     {
-		LOG = 7,
 		FSM_DISPATCH_EVENT = 0,
 		FSM_STATE_TRANSITION = 1,
 		FSM_RECEIVE_EVENT = 2,
@@ -11,5 +10,6 @@ namespace log
 		SCENE = 5,
 		PLAYER = 6,
 		TOUCH = 8,
+		LOG = 7,
 }
 }
