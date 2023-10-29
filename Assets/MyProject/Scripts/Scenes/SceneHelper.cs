@@ -16,7 +16,7 @@ namespace scenes
     public class SceneHelper
     {
 
-        private static Dictionary<AsyncOperation, (string Scene, Action Callback)> _scenesToLoadCache = new Dictionary<AsyncOperation, (string Scene, Action Callback)>();
+        private static Dictionary<AsyncOperation, (string Scene, bool setAsActive, Action Callback)> _scenesToLoadCache = new Dictionary<AsyncOperation, (string Scene, bool setAsActive, Action Callback)>();
         private static Dictionary<AsyncOperation, (string Scene, Action Callback)> _scenesToUnloadCache = new Dictionary<AsyncOperation, (string Scene, Action Callback)>();
 
         public static bool IsSceneLoaded(SceneType scene)
@@ -34,7 +34,7 @@ namespace scenes
         // ========================== Load Scenes ============================
         // ----------------------------------------------------------------------------------
 
-        public static void LoadSceneAsync(SceneType scene, LoadSceneMode mode = LoadSceneMode.Single, Action callback = null)
+        public static void LoadSceneAsync(SceneType scene, LoadSceneMode mode = LoadSceneMode.Single, bool setAsActive = false, Action callback = null)
         {
             if (IsSceneLoaded(scene))
             {
@@ -48,7 +48,7 @@ namespace scenes
             {
                 ELog.Log(ELogType.SCENE, "Loading scene '{0}'", scenePath);
                 var asyncOp = SceneManager.LoadSceneAsync(scenePath, mode);
-                _scenesToLoadCache.Add(asyncOp, (scenePath, callback));
+                _scenesToLoadCache.Add(asyncOp, (scenePath, setAsActive, callback));
                 asyncOp.completed += OnSceneLoaded;
             }
             catch (Exception e)
@@ -67,10 +67,19 @@ namespace scenes
             ELog.Log(ELogType.SCENE, "Loaded scene '{0}'", _scenesToLoadCache[obj].Scene);
 
             Action callback = _scenesToLoadCache[obj].Callback;
+            if (_scenesToLoadCache[obj].setAsActive)
+                SetSceneAsActive(_scenesToLoadCache[obj].Scene);
             _scenesToLoadCache.Remove(obj);
             callback?.Invoke();
         }
 
+        public static void SetSceneAsActive(SceneType scene)
+            => SetSceneAsActive(SceneHelperTypeSettingsSO.Instance.GetScenePath(scene));
+
+        private static void SetSceneAsActive(string scenePath)
+        {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByPath(scenePath));
+        }
 
         // ----------------------------------------------------------------------------------
         // ========================== Unload Scenes ============================
@@ -141,6 +150,7 @@ namespace scenes
         {
             LoadEditorScene(SceneType.APPLICATION);
             LoadEditorScene(SceneType.GAME, OpenSceneMode.Additive);
+            SetSceneAsActive(SceneType.GAME);
         }
 
         [MenuItem("MyProject/SCENES/MainMenu")]
@@ -148,6 +158,7 @@ namespace scenes
         {
             LoadEditorScene(SceneType.APPLICATION);
             LoadEditorScene(SceneType.MAIN_MENU, OpenSceneMode.Additive);
+            SetSceneAsActive(SceneType.MAIN_MENU);
         }
 
         [MenuItem("MyProject/SCENES/PauseMenu")]
@@ -155,6 +166,7 @@ namespace scenes
         {
             LoadEditorScene(SceneType.APPLICATION);
             LoadEditorScene(SceneType.PAUSE_MENU, OpenSceneMode.Additive);
+            SetSceneAsActive(SceneType.PAUSE_MENU);
         }
 
 

@@ -1,4 +1,4 @@
-namespace myproject.fsm
+namespace fsm
 {
     public enum FSMControllerType
     {
@@ -8,5 +8,6 @@ namespace myproject.fsm
 		APPLICATION = 3,
 		PLAYER = 4,
 		INPUT = 5,
+		GUN = 6,
 }
 }

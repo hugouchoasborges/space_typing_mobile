@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace myproject.tests.playmode
+namespace tests.playmode
 {
     public abstract class Test_PlayMode_Abstract
     {

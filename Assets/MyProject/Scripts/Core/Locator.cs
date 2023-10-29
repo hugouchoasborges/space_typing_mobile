@@ -1,7 +1,7 @@
 using application;
 using UnityEngine;
 
-namespace myproject.core
+namespace core
 {
     public class Locator
     {

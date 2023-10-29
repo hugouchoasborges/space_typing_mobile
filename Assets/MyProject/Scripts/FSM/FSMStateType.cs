@@ -1,4 +1,4 @@
-namespace myproject.fsm
+namespace fsm
 {
     public enum FSMStateType
     {

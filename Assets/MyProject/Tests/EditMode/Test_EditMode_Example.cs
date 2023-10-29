@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace myproject.tests.editmode
+namespace tests.editmode
 {
     public class Test_EditMode_Example : Test_EditMode_Abstract
     {

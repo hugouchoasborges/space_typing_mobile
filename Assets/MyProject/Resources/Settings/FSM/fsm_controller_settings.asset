@@ -19,6 +19,7 @@ MonoBehaviour:
   - APPLICATION
   - PLAYER
   - INPUT
+  - GUN
   cachedEnumTypes:
   - Name: ALL
     Count: 0
@@ -37,5 +38,8 @@ MonoBehaviour:
     Enabled: 1
   - Name: INPUT
     Count: 5
+    Enabled: 1
+  - Name: GUN
+    Count: 6
     Enabled: 1
   EnumScript: {fileID: 11500000, guid: d9e24adf6c02eee4bbae09e2270eb700, type: 3}

@@ -17,7 +17,7 @@ namespace application
 #endif
 
             // Go to Menu
-            GoToState(myproject.fsm.FSMStateType.MENU);
+            GoToState(fsm.FSMStateType.MENU);
         }
     }
 }

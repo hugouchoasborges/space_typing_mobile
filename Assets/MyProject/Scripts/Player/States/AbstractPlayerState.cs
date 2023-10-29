@@ -1,7 +1,7 @@
-using myproject.fsm;
+using fsm;
 using UnityEngine;
 
-namespace myproject.player
+namespace player
 {
     [RequireComponent(typeof(PlayerController))]
     public class AbstractPlayerState : IFSMState

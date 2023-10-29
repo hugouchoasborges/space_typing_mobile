@@ -1,7 +1,7 @@
-﻿using myproject.fsm;
+﻿using fsm;
 using UnityEngine;
 
-namespace myproject.input
+namespace input
 {
     [RequireComponent(typeof(InputController))]
     public class AbstractInputState : IFSMState

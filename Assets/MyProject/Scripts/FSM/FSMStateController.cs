@@ -1,11 +1,11 @@
-using myproject.fsm.settings;
+using fsm.settings;
 using log;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using tools.attributes;
 using UnityEngine;
 
-namespace myproject.fsm
+namespace fsm
 {
     public class FSMStateController : MonoBehaviour
     {

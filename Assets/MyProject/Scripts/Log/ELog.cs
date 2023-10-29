@@ -64,6 +64,15 @@ namespace log
 
         #region ========================== Log Debug ============================
 
+
+        public static void Log_CurrentMethod(ELogType type)
+        {
+#if UNITY_EDITOR
+            System.Reflection.MethodBase methodBase = new System.Diagnostics.StackTrace().GetFrame(1).GetMethod();
+            Log(type, string.Format("[Debug][{0}.{1}]", methodBase.ReflectedType.Name, methodBase.Name));
+#endif
+        }
+
         public static void Log_Debug(ELogType type, string log = "", params object[] args)
         {
 #if UNITY_EDITOR

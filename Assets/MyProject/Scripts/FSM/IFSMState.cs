@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace myproject.fsm
+namespace fsm
 {
     public abstract class IFSMState : UnityEngine.MonoBehaviour
     {

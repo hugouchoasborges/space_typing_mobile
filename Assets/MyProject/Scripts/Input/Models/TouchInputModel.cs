@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace myproject.input
+namespace input
 {
     public struct TouchInputModel
     {

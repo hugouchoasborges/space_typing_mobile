@@ -3,13 +3,13 @@
 #endif
 
 using log;
-using myproject.core;
-using myproject.fsm;
+using core;
+using fsm;
 using System.Collections.Generic;
 using tools;
 using UnityEngine;
 
-namespace myproject.input
+namespace input
 {
     public class InputController : MonoBehaviour
     {
@@ -32,9 +32,15 @@ namespace myproject.input
         private void Awake()
         {
 #if HAS_KEYBOARD
+            // Make sure to add Keyboard support
             if (_keyboardInput == null)
                 _keyboardInput = gameObject.GetComponent<KeyboardInputController>()
                     ?? gameObject.AddComponent<KeyboardInputController>();
+#else
+            // Make sure to remove Keyboard support
+            _keyboardInput = gameObject.GetComponent<KeyboardInputController>();
+            if (_keyboardInput != null)
+                Destroy(_keyboardInput);
 #endif
 
             SetPaused(true);

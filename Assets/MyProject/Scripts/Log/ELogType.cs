@@ -10,6 +10,7 @@ namespace log
 		SCENE = 5,
 		PLAYER = 6,
 		TOUCH = 8,
-		LOG = 7,
+		GUN = 9,
+		POOL = 10,
 }
 }

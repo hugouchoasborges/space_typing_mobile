@@ -6,7 +6,7 @@ using tools;
 using UnityEditor;
 #endif
 
-namespace myproject.fsm.settings
+namespace fsm.settings
 {
     class FSMSettingsSO : ScriptableObject
     {

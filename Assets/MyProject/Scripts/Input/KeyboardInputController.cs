@@ -1,11 +1,11 @@
 using log;
-using myproject.core;
-using myproject.fsm;
+using core;
+using fsm;
 using System.Collections.Generic;
 using tools;
 using UnityEngine;
 
-namespace myproject.input
+namespace input
 {
     public class KeyboardInputController : MonoBehaviour
     {
@@ -39,10 +39,10 @@ namespace myproject.input
         // ========================== Movement ============================
         // ----------------------------------------------------------------------------------
 
-        private bool CheckKeyCodeArray(KeyCode[] keyArray)
+        private bool CheckKeyCodeArray(KeyCode[] keyArray, System.Func<KeyCode, bool> myMethodName)
         {
             foreach (var key in keyArray)
-                if (Input.GetKey(key))
+                if (myMethodName(key))
                     return true;
 
             return false;
@@ -53,13 +53,13 @@ namespace myproject.input
             float x = 0;
             float y = 0;
 
-            if (CheckKeyCodeArray(_leftKey))
+            if (CheckKeyCodeArray(_leftKey, Input.GetKey))
                 x -= 1;
-            if (CheckKeyCodeArray(_rightKey))
+            if (CheckKeyCodeArray(_rightKey, Input.GetKey))
                 x += 1;
-            if (CheckKeyCodeArray(_upKey))
+            if (CheckKeyCodeArray(_upKey, Input.GetKey))
                 y += 1;
-            if (CheckKeyCodeArray(_downKey))
+            if (CheckKeyCodeArray(_downKey, Input.GetKey))
                 y -= 1;
 
             if (x != 0 || y != 0)
@@ -77,7 +77,9 @@ namespace myproject.input
 
         private void CheckActionInput()
         {
-            if (CheckKeyCodeArray(_shootKey))
+            // The shooting action will be triggered by holding the Shoot Key
+            // It's is up for the Player\Gun to define the fire rate
+            if (CheckKeyCodeArray(_shootKey, Input.GetKey))
                 ActionShoot();
         }
 

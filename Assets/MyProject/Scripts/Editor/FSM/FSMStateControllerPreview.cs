@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace myproject.fsm
+namespace fsm
 {
     [CustomPreview(typeof(FSMStateController))]
     public class FSMStateControllerPreview : ObjectPreview

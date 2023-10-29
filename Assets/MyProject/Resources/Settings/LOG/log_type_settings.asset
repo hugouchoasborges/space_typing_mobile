@@ -21,6 +21,8 @@ MonoBehaviour:
   - SCENE
   - PLAYER
   - TOUCH
+  - GUN
+  - POOL
   cachedEnumTypes:
   - Name: FSM_DISPATCH_EVENT
     Count: 0
@@ -46,9 +48,12 @@ MonoBehaviour:
   - Name: TOUCH
     Count: 8
     Enabled: 1
-  - Name: LOG
-    Count: 7
-    Enabled: 0
+  - Name: GUN
+    Count: 9
+    Enabled: 1
+  - Name: POOL
+    Count: 10
+    Enabled: 1
   EnumScript: {fileID: 11500000, guid: 78b9aa1882d19a04ca59ceb9cc1d3299, type: 3}
   _entries:
   - LogType: FSM_DISPATCH_EVENT
@@ -67,3 +72,7 @@ MonoBehaviour:
     Enabled: 0
   - LogType: TOUCH
     Enabled: 0
+  - LogType: GUN
+    Enabled: 1
+  - LogType: POOL
+    Enabled: 1

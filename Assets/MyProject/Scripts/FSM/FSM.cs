@@ -1,10 +1,10 @@
 using log;
-using myproject.fsm.settings;
+using fsm.settings;
 using Sirenix.OdinInspector;
 using tools;
 using UnityEngine;
 
-namespace myproject.fsm
+namespace fsm
 {
     public class FSM : Singleton<FSM>
     {

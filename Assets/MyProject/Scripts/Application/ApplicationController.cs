@@ -18,17 +18,17 @@ namespace application
 
         public void LoadMainMenu()
         {
-            SceneHelper.LoadSceneAsync(_mainMenuScene, LoadSceneMode.Additive);
+            SceneHelper.LoadSceneAsync(_mainMenuScene, mode: LoadSceneMode.Additive, setAsActive: true);
         }
 
         public void LoadGame()
         {
-            SceneHelper.LoadSceneAsync(_gameScene, LoadSceneMode.Additive);
+            SceneHelper.LoadSceneAsync(_gameScene, mode: LoadSceneMode.Additive, setAsActive: true);
         }
 
         private void LoadInitializationScene()
         {
-            SceneHelper.LoadSceneAsync(_initializationScene);
+            SceneHelper.LoadSceneAsync(_initializationScene, setAsActive: true);
         }
 
         public void RestartSystem()

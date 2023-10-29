@@ -185,6 +185,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">Guns/guns/DefaultGun.PNG</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <true/>
+                <key>scale9Borders</key>
+                <rect>8,8,16,16</rect>
+                <key>scale9Paddings</key>
+                <rect>8,8,16,16</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">Projectiles/projectiles/base-projectile.PNG</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -220,6 +235,7 @@
         <array>
             <filename>player</filename>
             <filename>Projectiles</filename>
+            <filename>Guns</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

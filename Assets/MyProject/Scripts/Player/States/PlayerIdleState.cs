@@ -1,8 +1,8 @@
 using log;
-using myproject.fsm;
-using myproject.input;
+using fsm;
+using input;
 
-namespace myproject.player
+namespace player
 {
     public class PlayerIdleState : AbstractPlayerState
     {

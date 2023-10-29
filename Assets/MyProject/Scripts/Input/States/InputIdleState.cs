@@ -1,4 +1,4 @@
-﻿namespace myproject.input
+﻿namespace input
 {
     public class InputIdleState : AbstractInputState
     {

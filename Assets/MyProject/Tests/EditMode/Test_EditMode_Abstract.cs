@@ -7,7 +7,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace myproject.tests.editmode
+namespace tests.editmode
 {
     public abstract class Test_EditMode_Abstract
     {

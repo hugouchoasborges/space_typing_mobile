@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9172530856230941591}
   - component: {fileID: 7683470455240508802}
   - component: {fileID: 3656718075287630012}
+  - component: {fileID: 5944242224878865484}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -33,6 +34,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1325253792792575149}
+  - {fileID: 8902777813865132925}
+  - {fileID: 5211222978159758044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9172530856230941591
@@ -47,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0495ebeb2569386409b5e4c10ee9f6e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gunSlot: {fileID: 8902777813865132925}
 --- !u!114 &7683470455240508802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,11 +64,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controllerType: 0
-  _initialState: 1
+  _initialState: 3
   _statesSerialized:
   - EventType: 1
     State: {fileID: 3656718075287630012}
     AllowedEventTypes: 020000000700000008000000
+  - EventType: 3
+    State: {fileID: 5944242224878865484}
+    AllowedEventTypes: 
   allowedEventTypes: 
   _lastEventsReceivedIgnoreList: 
 --- !u!114 &3656718075287630012
@@ -77,6 +84,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ba636e14792ee042a1637914c1a609d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5944242224878865484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54201477452121253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f728dbbb7e65848933133f3b603551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4781550999401548624
@@ -209,3 +228,65 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.7933326, y: 1.6668861}
   m_EdgeRadius: 0
+--- !u!1 &5457161531313963657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5211222978159758044}
+  m_Layer: 0
+  m_Name: GunSlot_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5211222978159758044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5457161531313963657}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6395192783110467458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8570653027529119279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8902777813865132925}
+  m_Layer: 0
+  m_Name: GunSlot_00
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8902777813865132925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8570653027529119279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.97, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6395192783110467458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
