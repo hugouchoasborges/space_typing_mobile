@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7683470455240508802}
   - component: {fileID: 3656718075287630012}
   - component: {fileID: 5944242224878865484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1325253792792575149}
   - component: {fileID: 953483764698663506}
   - component: {fileID: 1646795699210635028}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5211222978159758044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunSlot_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8902777813865132925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunSlot_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}

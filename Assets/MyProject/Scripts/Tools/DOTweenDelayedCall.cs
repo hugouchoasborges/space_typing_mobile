@@ -19,10 +19,12 @@ namespace tools
         /// </summary>
         /// <param name="callback">Callback to be invoked</param>
         /// <param name="interval">Interval for this call in seconds</param>
+        /// <param name="loops">Number of cycles to play (-1 for infinite - will be converted to 1 in case the tween is nested in a Sequence</param>
+        /// <param name="loopType">Loop behaviour type (default: LoopType.Restart)</param>
         /// <returns></returns>
-        public static DelayedCall DelayedCall(TweenCallback callback, float interval)
+        public static DelayedCall DelayedCall(TweenCallback callback, float interval, int loops = 0, LoopType loopType = LoopType.Restart)
         {
-            DelayedCall delayedCall = new DelayedCall(interval, callback);
+            DelayedCall delayedCall = new DelayedCall(interval, callback, loops: loops, loopType: loopType);
 
             // Save sequence if interval is greater than 0
             if (delayedCall.Interval > 0)
@@ -93,21 +95,30 @@ namespace tools
         public Sequence Sequence { get; private set; }
         public float Interval { get; private set; }
         public TweenCallback Callback { get; private set; }
+        public int Loops { get; private set; }
+        public LoopType LoopType { get; private set; }
 
-        public DelayedCall(float interval, TweenCallback callback)
+        public DelayedCall(float interval, TweenCallback callback, int loops = 0, LoopType loopType = LoopType.Restart)
         {
             interval = Mathf.Max(interval, 0);
 
             Interval = interval;
             Callback = callback;
+            Loops = loops;
+            LoopType = loopType;
 
             Sequence = DOTween.Sequence().AppendInterval(interval).AppendCallback(OnDelayedCallFinished);
+            if (loops != 0)
+                Sequence.SetLoops(loops, loopType);
         }
 
         private void OnDelayedCallFinished()
         {
             Callback?.Invoke();
-            DOTweenDelayedCall.KillDelayedCall(this);
+            
+            if(Loops > 0) Loops--;
+            if (Loops == 0)
+                DOTweenDelayedCall.KillDelayedCall(this);
         }
 
         public bool Kill()

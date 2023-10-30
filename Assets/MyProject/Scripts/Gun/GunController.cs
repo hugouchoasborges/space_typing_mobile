@@ -1,5 +1,6 @@
 using log;
 using Sirenix.OdinInspector;
+using System;
 using tools;
 using UnityEngine;
 using utils;
@@ -17,6 +18,8 @@ namespace gun
 
         private bool _fireRateLock = false;
         private DelayedCall _resetFireRateDelayedCall = null;
+
+        public Action<GameObject> OnTargetHitCallback;
 
         private void Start()
         {
@@ -38,7 +41,6 @@ namespace gun
             _bullets?.UpdatePrefab(_bullet);
         }
 
-
         // ========================== Fire ============================
 
         public void Fire()
@@ -47,15 +49,20 @@ namespace gun
             if (!CanFire())
                 return;
 
-            ELog.Log_CurrentMethod(ELogType.GUN);
+            //ELog.Log_CurrentMethod(ELogType.GUN);
 
             // Get Bullet from pool
             BulletController bullet = _bullets.Dequeue();
 
             //bullet.transform.SetParent(transform, false);
             bullet.transform.SetPositionAndRotation(transform.position, transform.rotation);
-            bullet.Fire(_impulse / 100f, OnBulletDestroyed);
+            bullet.Fire(_impulse / 100f, OnTargetHit, OnBulletDestroyed);
             OnFire();
+        }
+
+        private void OnTargetHit(GameObject target)
+        {
+            OnTargetHitCallback?.Invoke(target);
         }
 
         private void OnBulletDestroyed(BulletController bullet)

@@ -12,5 +12,6 @@ namespace log
 		TOUCH = 8,
 		GUN = 9,
 		POOL = 10,
+		BULLET = 11,
 }
 }

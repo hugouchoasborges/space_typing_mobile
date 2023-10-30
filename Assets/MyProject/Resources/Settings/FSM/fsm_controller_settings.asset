@@ -20,6 +20,7 @@ MonoBehaviour:
   - PLAYER
   - INPUT
   - GUN
+  - ENEMY
   cachedEnumTypes:
   - Name: ALL
     Count: 0
@@ -41,5 +42,8 @@ MonoBehaviour:
     Enabled: 1
   - Name: GUN
     Count: 6
+    Enabled: 1
+  - Name: ENEMY
+    Count: 7
     Enabled: 1
   EnumScript: {fileID: 11500000, guid: d9e24adf6c02eee4bbae09e2270eb700, type: 3}

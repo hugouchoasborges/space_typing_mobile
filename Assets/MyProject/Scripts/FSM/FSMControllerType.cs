@@ -9,5 +9,6 @@ namespace fsm
 		PLAYER = 4,
 		INPUT = 5,
 		GUN = 6,
+		ENEMY = 7,
 }
 }

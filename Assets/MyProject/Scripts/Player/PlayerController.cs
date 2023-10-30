@@ -23,7 +23,33 @@ namespace player
             foreach (var gun in guns)
             {
                 gun.transform.SetParent(_gunSlot, false);
+                gun.OnTargetHitCallback = OnTargetHit;
             }
+        }
+
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Callbacks\Events ============================
+        // ----------------------------------------------------------------------------------
+
+        private void OnTargetHit(GameObject target)
+        {
+            ELog.Log_CurrentMethod(ELogType.PLAYER);
+
+            // MEDO: Calculate points earned based com a PointSystemSO configuration page
+            // GetPointsForEnemy(target)
+
+            // MEDO: Update GUI
+            // Locator.ApplicationController.UpdateGUI();
+        }
+
+        private void OnPlayerHit()
+        {
+            // MEDO: Play Particles
+
+            // MEDO: Destroy player
+
+            // MEDO: Show GameOver Screen (Wait a sec before doing this)
         }
 
         // ----------------------------------------------------------------------------------
@@ -41,7 +67,6 @@ namespace player
 
 
         // ========================== Shooting ============================
-
 
         public void Shoot()
         {
