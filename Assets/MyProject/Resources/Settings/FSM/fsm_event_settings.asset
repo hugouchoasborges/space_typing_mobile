@@ -22,6 +22,7 @@ MonoBehaviour:
   - APPLICATION_RESUMED
   - KEYBOARD_MOVED
   - PLAYER_SHOOT
+  - ENEMY_DESTROYED
   cachedEnumTypes:
   - Name: NONE
     Count: 0
@@ -49,5 +50,8 @@ MonoBehaviour:
     Enabled: 1
   - Name: PLAYER_SHOOT
     Count: 8
+    Enabled: 1
+  - Name: ENEMY_DESTROYED
+    Count: 9
     Enabled: 1
   EnumScript: {fileID: 11500000, guid: d26dcaf8c86161a45ab77c89bbf019a5, type: 3}

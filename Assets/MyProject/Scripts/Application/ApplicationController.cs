@@ -1,3 +1,4 @@
+using enemy;
 using scenes;
 using tools;
 using UnityEngine;
@@ -74,6 +75,20 @@ namespace application
         public void StopSpawningEnemies()
         {
             _enemySpawner.StopSpawningEnemies();
+        }
+
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Enemy Events ============================
+        // ----------------------------------------------------------------------------------
+
+        public void OnEnemyDestroyed(EnemyController enemy)
+        {
+            // Tells EnemySpawn to destroy enemy (pool)
+            _enemySpawner.DestroyEnemy(enemy);
+
+            // MEDO: Update players points
+            // MEDO: Update GUI
         }
     }
 }

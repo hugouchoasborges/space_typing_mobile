@@ -24,6 +24,7 @@ MonoBehaviour:
   - GUN
   - POOL
   - BULLET
+  - ENEMY
   cachedEnumTypes:
   - Name: FSM_DISPATCH_EVENT
     Count: 0
@@ -58,6 +59,9 @@ MonoBehaviour:
   - Name: BULLET
     Count: 11
     Enabled: 1
+  - Name: ENEMY
+    Count: 12
+    Enabled: 1
   EnumScript: {fileID: 11500000, guid: 78b9aa1882d19a04ca59ceb9cc1d3299, type: 3}
   _entries:
   - LogType: FSM_DISPATCH_EVENT
@@ -81,4 +85,6 @@ MonoBehaviour:
   - LogType: POOL
     Enabled: 1
   - LogType: BULLET
+    Enabled: 1
+  - LogType: ENEMY
     Enabled: 1

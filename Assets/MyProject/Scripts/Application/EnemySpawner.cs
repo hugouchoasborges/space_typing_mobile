@@ -69,6 +69,7 @@ namespace application
 
         public void SpawnEnemy()
         {
+            // MEDO: Dequeue not reutilizing enqueued enemies
             EnemyController newEnemy = _queuedEnemies.Dequeue();
             newEnemy.gameObject.SetActive(true);
 

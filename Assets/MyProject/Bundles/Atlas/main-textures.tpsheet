@@ -4,7 +4,7 @@
 # To import these sprites into your Unity project, download "TexturePackerImporter":
 # https://www.codeandweb.com/texturepacker/unity
 #
-# $TexturePacker:SmartUpdate:e6cd48383dacd1f5e5d1728aa249856e:ccfe0e53dcf2a37febd58528a58a450f:b752570f55480fc7f91898b5d7d1a38a$
+# $TexturePacker:SmartUpdate:b9fb1967444e2e7dc677d83cf318b69c:b5164583229377b4af2d6eaa65ceb2b7:b752570f55480fc7f91898b5d7d1a38a$
 #
 :format=40300
 :texture=main-textures.png
@@ -13,8 +13,12 @@
 :borders=enabled
 :alphahandling=ClearTransparentPixels
 
-Enemy01;204;134;171;171; 0.49707602339181284;0.5029239766081872; 0;0;0;0
-Enemy02;1;129;201;176; 0.5074626865671642;0.4204545454545454; 0;0;0;0
-guns-DefaultGun;375;479;32;32; 0.5;0.5; 8;8;8;8
+Background-rock_00;375;250;85;82; 0.5;0.5; 0;0;0;0
+Background-rock_01;375;424;120;87; 0.5;0.5; 0;0;0;0
+Background-rock_02;375;334;94;88; 0.5;0.5; 0;0;0;0
+Background-star_00;1;16;56;56; 0.5;0.5; 0;0;0;0
+Enemy01;202;136;169;169; 0.5;0.5; 0;0;0;0
+Enemy02;1;74;199;174; 0.5;0.5; 0;0;0;0
+guns-DefaultGun;471;390;32;32; 0.5;0.5; 8;8;8;8
 player-Player;1;307;372;204; 0.5;0.5637254901960784; 0;0;0;0
-projectiles-base-projectile;409;433;18;78; 0.5;0.5; 0;0;0;0
+projectiles-base-projectile;471;310;18;78; 0.5;0.5; 0;0;0;0

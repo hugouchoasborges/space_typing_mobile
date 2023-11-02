@@ -12,6 +12,7 @@ namespace application
             if (SceneHelper.SceneCount() > 1)
             {
                 // Do nothing
+                GoToState(fsm.FSMStateType.GAME);
                 return;
             }
 #endif

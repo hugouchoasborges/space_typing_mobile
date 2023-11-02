@@ -11,5 +11,6 @@ namespace fsm
 		APPLICATION_RESUMED = 6,
 		KEYBOARD_MOVED = 7,
 		PLAYER_SHOOT = 8,
+		ENEMY_DESTROYED = 9,
 }
 }

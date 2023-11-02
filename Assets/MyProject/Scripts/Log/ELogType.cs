@@ -13,5 +13,6 @@ namespace log
 		GUN = 9,
 		POOL = 10,
 		BULLET = 11,
+		ENEMY = 12,
 }
 }

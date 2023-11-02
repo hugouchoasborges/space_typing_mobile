@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _impulse: 5
+  _bulletsPerSecond: 5
   _bullet: {fileID: 4358846367375853381, guid: 781b7a4c170fcea4ab9ecf56827f55e4, type: 3}
 --- !u!114 &6304900404446507693
 MonoBehaviour:
@@ -122,7 +123,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c22918ad3a12031409fa06aeeeb3ae89, type: 3}
+  m_Sprite: {fileID: -242688218, guid: 0fed55a4d03313445b17c308e09433e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -1,3 +1,4 @@
+using log;
 using UnityEngine;
 
 namespace enemy
@@ -12,12 +13,32 @@ namespace enemy
             _rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
-        //private void Start()
-        //{
-        //    // MEDO: Remove mocked startup
-        //    // Mock Startup
-        //    SetImpulse(Vector2.down * 5);
-        //}
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Collision ============================
+        // ----------------------------------------------------------------------------------
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            OnHit();
+        }
+
+        private void OnHit()
+        {
+            // MEDO: Particles
+
+            gameObject.SetActive(false);
+
+            // Dispatch event, so:
+            // * Points are added to the player
+            // * Spawner can recycle this enemy (pool)
+            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ENEMY_DESTROYED, this);
+        }
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Movement ============================
+        // ----------------------------------------------------------------------------------
+
 
         public void SetImpulse(Vector2 direction)
         {

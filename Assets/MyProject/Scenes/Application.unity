@@ -398,7 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnArea: {fileID: 1274892840}
   _enemiesPerSec: 0.5
-  _enemiesSpeedRange: {x: 3, y: 20}
+  _enemiesSpeedRange: {x: 3.4673452, y: 20}
 --- !u!1 &2029796081
 GameObject:
   m_ObjectHideFlags: 0

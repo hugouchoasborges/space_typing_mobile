@@ -64,6 +64,8 @@ namespace gun
             _onTargetHit?.Invoke(target);
 
             // MEDO: Spawn Particles
+
+            // Destroy this bullet
             OnDestroy();
         }
 
