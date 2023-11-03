@@ -34,8 +34,6 @@ namespace player
 
         private void OnTargetHit(GameObject target)
         {
-            ELog.Log_CurrentMethod(ELogType.PLAYER);
-
             // MEDO: Calculate points earned based com a PointSystemSO configuration page
             // GetPointsForEnemy(target)
 

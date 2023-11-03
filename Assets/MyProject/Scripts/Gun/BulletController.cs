@@ -58,8 +58,6 @@ namespace gun
 
         private void OnHit(GameObject target)
         {
-            log.ELog.Log_CurrentMethod(log.ELogType.BULLET);
-
             // Callback
             _onTargetHit?.Invoke(target);
 

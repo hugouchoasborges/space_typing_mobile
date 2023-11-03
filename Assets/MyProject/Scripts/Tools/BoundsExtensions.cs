@@ -15,5 +15,13 @@ namespace tools
 
             return corners;
         }
+
+        public static Vector2 GetRandomPosition(this Bounds bounds)
+        {
+            return new Vector2(
+                bounds.center.x + Random.Range(-bounds.size.x / 2f, bounds.size.x / 2f),
+                bounds.center.y + Random.Range(-bounds.size.y / 2f, bounds.size.y / 2f)
+                );
+        }
     }
 }
