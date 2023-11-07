@@ -19,7 +19,7 @@ namespace menu
             _mainMenu.SetActive(true);
 
             // Add Listeners
-            _playbutton.onClick.AddListener(Play);
+            _playbutton.onClick.AddListener(GoToPlayerSelector);
         }
 
         public void CloseMainMenu()
@@ -69,6 +69,11 @@ namespace menu
         }
 
         // ========================== Common ============================
+
+        private void GoToPlayerSelector()
+        {
+            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.REQUEST_PLAYER_SELECTOR); ;
+        }
 
         private void Play()
         {

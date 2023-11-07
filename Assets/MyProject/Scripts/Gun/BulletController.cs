@@ -11,6 +11,9 @@ namespace gun
         [SerializeField] private LayerMask _collisionMask;
         private LayerMask _collisionMaskLayer;
 
+        [Header("Components")]
+        [SerializeField] private TrailRenderer _trailRenderer;
+
         private Rigidbody2D _rigidbody2D;
         private Action<BulletController> _onDestroy;
         private Action<GameObject> _onTargetHit;
@@ -43,7 +46,9 @@ namespace gun
 
         private void OnFire()
         {
-            // MEDO: Particles
+            // Clears trail -- Fix bug
+            _trailRenderer.Clear();
+            _trailRenderer.emitting = true;
 
             // Start lifetime cycle
             _lifecycleDelayedCall = DOTweenDelayedCall.DelayedCall(OnDestroy, _maxLifetimeSeconds);
@@ -80,6 +85,9 @@ namespace gun
             // Reset Physics
             _rigidbody2D.velocity = Vector3.zero;
             _rigidbody2D.angularVelocity = 0;
+
+            // Disable trail
+            _trailRenderer.emitting = false;
 
             // Reset Transform
             transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);

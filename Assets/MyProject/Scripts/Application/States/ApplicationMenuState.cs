@@ -19,6 +19,10 @@ namespace application
                 case FSMEventType.REQUEST_PLAY:
                     GoToState(FSMStateType.GAME);
                     break;
+
+                case FSMEventType.REQUEST_PLAYER_SELECTOR:
+                    GoToState(FSMStateType.PLAYER_SELECTOR);
+                    break;
             }
         }
     }

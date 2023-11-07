@@ -14,7 +14,7 @@ namespace fsm
         public FSMControllerType ControllerType => _controllerType;
 
         [SerializeField]
-        private bool _allowAllEvents = false;
+        private bool _allowAllEvents = true;
 
 #if UNITY_EDITOR
 

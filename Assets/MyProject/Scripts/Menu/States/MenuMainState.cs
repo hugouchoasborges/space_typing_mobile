@@ -20,6 +20,10 @@ namespace menu
                 case FSMEventType.ON_APPLICATION_GAME:
                     GoToState(FSMStateType.GAME);
                 break;
+
+                case FSMEventType.ON_APPLICATION_PLAYER_SELECTOR:
+                    GoToState(FSMStateType.PLAYER_SELECTOR);
+                    break;
             }
         }
 

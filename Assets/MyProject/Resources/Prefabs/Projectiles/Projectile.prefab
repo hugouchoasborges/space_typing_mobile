@@ -5112,7 +5112,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_MaskInteraction: 0
-  m_Autodestruct: 1
+  m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
 --- !u!1 &4358846367375853381
@@ -5194,6 +5194,7 @@ MonoBehaviour:
   _collisionMask:
     serializedVersion: 2
     m_Bits: 128
+  _trailRenderer: {fileID: 3021257305058866427}
 --- !u!70 &5300390323416798329
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
