@@ -1,5 +1,8 @@
 using fsm;
+using scenes;
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace application
 {
@@ -11,7 +14,13 @@ namespace application
         public override void OnStateEnter()
         {
             ApplyQualitySettings();
-            GoToState(FSMStateType.IDLE);
+            LoadBaseScenes(() => GoToState(FSMStateType.IDLE));
+        }
+
+        private void LoadBaseScenes(Action callback)
+        {
+            SceneHelper.LoadSceneAsync(SceneType.GAME, LoadSceneMode.Additive, setAsActive: true);
+            SceneHelper.LoadSceneAsync(SceneType.MAIN_MENU, LoadSceneMode.Additive, setAsActive: false, callback);
         }
 
         private void ApplyQualitySettings()
