@@ -18,11 +18,18 @@ MonoBehaviour:
   - TOUCH_MOVED
   - TOUCH_ENDED
   - TOUCH_TAP
-  - APPLICATION_PAUSED
-  - APPLICATION_RESUMED
+  - ON_APPLICATION_PAUSED
+  - ON_APPLICATION_RESUMED
   - KEYBOARD_MOVED
   - PLAYER_SHOOT
   - ENEMY_DESTROYED
+  - REQUEST_MAIN_MENU
+  - ON_APPLICATION_MAIN_MENU
+  - REQUEST_PLAY
+  - ON_APPLICATION_GAME
+  - ON_APPLICATION_PLAYER_SELECTOR
+  - REQUEST_PLAYER_NEXT_SKIN
+  - REQUEST_PLAYER_PREVIOUS_SKIN
   cachedEnumTypes:
   - Name: NONE
     Count: 0
@@ -39,12 +46,15 @@ MonoBehaviour:
   - Name: TOUCH_TAP
     Count: 4
     Enabled: 1
-  - Name: APPLICATION_PAUSED
-    Count: 5
+  - Name: ON_APPLICATION_PAUSED
+    Count: 12
     Enabled: 1
-  - Name: APPLICATION_RESUMED
+  - Name: ON_APPLICATION_RESUMED
     Count: 6
     Enabled: 1
+  - Name: PREPARE_MENU
+    Count: 10
+    Enabled: 0
   - Name: KEYBOARD_MOVED
     Count: 7
     Enabled: 1
@@ -53,5 +63,26 @@ MonoBehaviour:
     Enabled: 1
   - Name: ENEMY_DESTROYED
     Count: 9
+    Enabled: 1
+  - Name: REQUEST_MAIN_MENU
+    Count: 13
+    Enabled: 1
+  - Name: ON_APPLICATION_MAIN_MENU
+    Count: 11
+    Enabled: 1
+  - Name: REQUEST_PLAY
+    Count: 14
+    Enabled: 1
+  - Name: ON_APPLICATION_GAME
+    Count: 15
+    Enabled: 1
+  - Name: ON_APPLICATION_PLAYER_SELECTOR
+    Count: 16
+    Enabled: 1
+  - Name: REQUEST_PLAYER_NEXT_SKIN
+    Count: 17
+    Enabled: 1
+  - Name: REQUEST_PLAYER_PREVIOUS_SKIN
+    Count: 18
     Enabled: 1
   EnumScript: {fileID: 11500000, guid: d26dcaf8c86161a45ab77c89bbf019a5, type: 3}

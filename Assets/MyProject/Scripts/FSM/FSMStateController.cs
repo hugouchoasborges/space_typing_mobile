@@ -13,6 +13,9 @@ namespace fsm
         private FSMControllerType _controllerType = FSMControllerType.NONE;
         public FSMControllerType ControllerType => _controllerType;
 
+        [SerializeField]
+        private bool _allowAllEvents = false;
+
 #if UNITY_EDITOR
 
         public string PreviewGUI
@@ -191,7 +194,7 @@ namespace fsm
         {
             if (eventType == FSMEventType.NONE) return;
             if (_currentState == null) return;
-            if (!_currentState.AllowedEventTypes.Contains(eventType) && !allowedEventTypes.Contains(eventType)) return;
+            if (!_allowAllEvents && !_currentState.AllowedEventTypes.Contains(eventType) && !allowedEventTypes.Contains(eventType)) return;
 
             ELog.Log(ELogType.FSM_RECEIVE_EVENT, "{0}: Event Received: {1}{2}", name, eventType, data == null ? "" : " [contains data]");
 

@@ -71,9 +71,9 @@ MonoBehaviour:
   - LogType: FSM_RECEIVE_EVENT
     Enabled: 0
   - LogType: NONE
-    Enabled: 0
-  - LogType: BUILD
     Enabled: 1
+  - LogType: BUILD
+    Enabled: 0
   - LogType: SCENE
     Enabled: 0
   - LogType: PLAYER
@@ -81,10 +81,10 @@ MonoBehaviour:
   - LogType: TOUCH
     Enabled: 0
   - LogType: GUN
-    Enabled: 1
+    Enabled: 0
   - LogType: POOL
-    Enabled: 1
+    Enabled: 0
   - LogType: BULLET
-    Enabled: 1
+    Enabled: 0
   - LogType: ENEMY
-    Enabled: 1
+    Enabled: 0

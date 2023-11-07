@@ -22,6 +22,16 @@ namespace background
         // ========================== Handling Stars ============================
         // ----------------------------------------------------------------------------------
 
+        public void PlayStars()
+        {
+            _starsParticleSystem.Play();
+        }
+
+        public void StopStars()
+        {
+            _starsParticleSystem.Stop();
+        }
+
         private void UpdateStarsBounds()
         {
             var shapeModule = _starsParticleSystem.shape;
@@ -32,6 +42,15 @@ namespace background
         // ----------------------------------------------------------------------------------
         // ========================== Handling Meteors ============================
         // ----------------------------------------------------------------------------------
+
+        public void PlayMeteors()
+        {
+            _meteorsParticleSystem.Play();
+        }
+        public void StopMeteors()
+        {
+            _meteorsParticleSystem.Stop();
+        }
 
         private void UpdateMeteorsBounds()
         {

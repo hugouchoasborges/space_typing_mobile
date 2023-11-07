@@ -9,10 +9,10 @@ namespace application
 #if UNITY_EDITOR
             // Do not load the initialization if another scene is already loaded
             // Testing behavior
-            if (SceneHelper.SceneCount() > 1)
+            if (SceneHelper.SceneCount() > 1 && ApplicationController.HackedStartupState != fsm.FSMStateType.NONE)
             {
                 // Do nothing
-                GoToState(fsm.FSMStateType.GAME);
+                GoToState(ApplicationController.HackedStartupState);
                 return;
             }
 #endif

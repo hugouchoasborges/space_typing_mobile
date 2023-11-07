@@ -202,12 +202,14 @@ GameObject:
   - component: {fileID: 1610442563}
   - component: {fileID: 1610442564}
   - component: {fileID: 1610442571}
+  - component: {fileID: 1610442572}
   - component: {fileID: 1610442565}
   - component: {fileID: 1610442570}
   - component: {fileID: 1610442569}
   - component: {fileID: 1610442568}
   - component: {fileID: 1610442567}
   - component: {fileID: 1610442566}
+  - component: {fileID: 1610442573}
   m_Layer: 0
   m_Name: ApplicationController
   m_TagString: Untagged
@@ -245,6 +247,7 @@ MonoBehaviour:
   _mainMenuScene: 2
   _gameScene: 1
   _initializationScene: 4
+  _playerSpawner: {fileID: 1610442572}
   _enemySpawner: {fileID: 1610442571}
 --- !u!114 &1610442565
 MonoBehaviour:
@@ -259,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controllerType: 3
+  _allowAllEvents: 1
   _initialState: 3
   _statesSerialized:
   - EventType: 3
@@ -269,12 +273,15 @@ MonoBehaviour:
     AllowedEventTypes: 
   - EventType: 4
     State: {fileID: 1610442568}
-    AllowedEventTypes: 
+    AllowedEventTypes: 0d0000000e000000
   - EventType: 5
     State: {fileID: 1610442569}
     AllowedEventTypes: 09000000
   - EventType: 6
     State: {fileID: 1610442570}
+    AllowedEventTypes: 
+  - EventType: 7
+    State: {fileID: 1610442573}
     AllowedEventTypes: 
   allowedEventTypes: 
   _lastEventsReceivedIgnoreList: 
@@ -359,6 +366,30 @@ MonoBehaviour:
     m_Extent: {x: 30, y: 50, z: 0}
   _enemiesPerSec: 0.5
   _enemiesSpeedRange: {x: 3.4673452, y: 20}
+--- !u!114 &1610442572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610442562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d60de7541fcbab4589e78295dfb5215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1610442573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610442562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b9d174fb6cad244bfac290f56d5895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2029796081
 GameObject:
   m_ObjectHideFlags: 0

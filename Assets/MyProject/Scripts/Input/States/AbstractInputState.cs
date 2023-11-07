@@ -20,11 +20,11 @@ namespace input
 
             switch (eventType)
             {
-                case FSMEventType.APPLICATION_PAUSED:
+                case FSMEventType.ON_APPLICATION_PAUSED:
                     OnApplicationPaused(true);
                     break;
 
-                case FSMEventType.APPLICATION_RESUMED:
+                case FSMEventType.ON_APPLICATION_RESUMED:
                     OnApplicationPaused(false);
                     break;
             }

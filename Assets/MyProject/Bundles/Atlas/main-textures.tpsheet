@@ -4,21 +4,23 @@
 # To import these sprites into your Unity project, download "TexturePackerImporter":
 # https://www.codeandweb.com/texturepacker/unity
 #
-# $TexturePacker:SmartUpdate:b9fb1967444e2e7dc677d83cf318b69c:b5164583229377b4af2d6eaa65ceb2b7:b752570f55480fc7f91898b5d7d1a38a$
+# $TexturePacker:SmartUpdate:c87d91be791312a38b33734ba761add3:524742dbb227b8f3067bfd2e6d74d72b:b752570f55480fc7f91898b5d7d1a38a$
 #
 :format=40300
 :texture=main-textures.png
-:size=512x512
+:size=512x1024
 :pivotpoints=enabled
 :borders=enabled
 :alphahandling=ClearTransparentPixels
 
-Background-rock_00;375;250;85;82; 0.5;0.5; 0;0;0;0
-Background-rock_01;375;424;120;87; 0.5;0.5; 0;0;0;0
-Background-rock_02;375;334;94;88; 0.5;0.5; 0;0;0;0
-Background-star_00;1;16;56;56; 0.5;0.5; 0;0;0;0
-Enemy01;202;136;169;169; 0.5;0.5; 0;0;0;0
-Enemy02;1;74;199;174; 0.5;0.5; 0;0;0;0
-guns-DefaultGun;471;390;32;32; 0.5;0.5; 8;8;8;8
-player-Player;1;307;372;204; 0.5;0.5637254901960784; 0;0;0;0
-projectiles-base-projectile;471;310;18;78; 0.5;0.5; 0;0;0;0
+Background-rock_00;384;762;85;82; 0.5;0.5; 0;0;0;0
+Background-rock_01;384;936;120;87; 0.5;0.5; 0;0;0;0
+Background-rock_02;384;846;94;88; 0.5;0.5; 0;0;0;0
+Background-star_00;384;704;56;56; 0.5;0.5; 0;0;0;0
+Enemy01;1;46;169;169; 0.5;0.5; 0;0;0;0
+Enemy02;1;217;199;174; 0.5;0.5; 0;0;0;0
+guns-DefaultGun;471;812;32;32; 0.5;0.5; 8;8;8;8
+player-Player_00;1;393;370;202; 0.5;0.5; 0;0;0;0
+player-Player_01;1;811;381;212; 0.5;0.5; 0;0;0;0
+player-Player_02;1;597;381;212; 0.5;0.5; 0;0;0;0
+projectiles-base-projectile;480;856;18;78; 0.5;0.5; 0;0;0;0

@@ -6,13 +6,13 @@ namespace application
     [RequireComponent(typeof(ApplicationController))]
     public class AbstractApplicationState : IFSMState
     {
-        protected ApplicationController applicationController;
+        protected ApplicationController controller;
 
         private void Awake()
         {
-            if (applicationController == null)
+            if (controller == null)
             {
-                applicationController = GetComponent<ApplicationController>();
+                controller = GetComponent<ApplicationController>();
             }
         }
     }

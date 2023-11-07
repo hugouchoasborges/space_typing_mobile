@@ -4,7 +4,6 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using tools;
 using UnityEngine;
-using UnityEngine.UI;
 using utils;
 
 namespace application
@@ -19,8 +18,13 @@ namespace application
         private PoolController<EnemyController> _queuedEnemies;
         private List<EnemyController> _activeEnemies;
 
-        private void Start()
+        private bool _initialized = false;
+
+        public void Initialize()
         {
+            if (_initialized) return;
+            _initialized = true;
+
             _queuedEnemies = new PoolController<EnemyController>(prefab: EnemySettingsSO.Instance.EnemyDefault);
             _activeEnemies = new List<EnemyController>();
         }
@@ -68,7 +72,6 @@ namespace application
 
         public void SpawnEnemy()
         {
-            // MEDO: Dequeue not reutilizing enqueued enemies
             EnemyController newEnemy = _queuedEnemies.Dequeue();
             newEnemy.gameObject.SetActive(true);
 
@@ -99,6 +102,8 @@ namespace application
 
         private void LateUpdate()
         {
+            if (_activeEnemies == null) return;
+
             // Destroy enemies outside boundaries
             for (int i = _activeEnemies.Count - 1; i >= 0; i--)
             {

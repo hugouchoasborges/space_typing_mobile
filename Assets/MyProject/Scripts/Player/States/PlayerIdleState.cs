@@ -1,6 +1,4 @@
-using log;
 using fsm;
-using input;
 
 namespace player
 {
@@ -10,20 +8,15 @@ namespace player
         {
             base.OnGameEventReceived(eventType, data);
 
-            switch(eventType)
+            switch (eventType)
             {
-                case FSMEventType.TOUCH_MOVED:
-                    TouchInputModel input = (TouchInputModel)data;
-                    controller.Move(input.Delta);
+                case FSMEventType.ON_APPLICATION_RESUMED:
+                case FSMEventType.ON_APPLICATION_GAME:
+                    GoToState(FSMStateType.GAME);
                     break;
 
-                case FSMEventType.KEYBOARD_MOVED:
-                    KeyboardInputModel keyboardInput = (KeyboardInputModel)data;
-                    controller.Move(keyboardInput.Delta);
-                    break;
-
-                case FSMEventType.PLAYER_SHOOT:
-                    controller.Shoot();
+                case FSMEventType.ON_APPLICATION_PLAYER_SELECTOR:
+                    GoToState(FSMStateType.PLAYER_SELECTOR);
                     break;
             }
         }

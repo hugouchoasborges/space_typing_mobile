@@ -3,6 +3,7 @@ using fsm.settings;
 using Sirenix.OdinInspector;
 using tools;
 using UnityEngine;
+using System.Collections;
 
 namespace fsm
 {
@@ -64,8 +65,27 @@ namespace fsm
         // ========================== Event Dispatch ============================
         // ----------------------------------------------------------------------------------
 
+        private WaitForEndOfFrame _waitForEndOfFrame = new WaitForEndOfFrame();
+
         // Static options
-        public static void DispatchGameEvent(FSMControllerType controllerType, FSMStateType stateType, FSMEventType eventType, object data = null) => Instance?.Internal_DispatchGameEvent(controllerType, stateType, eventType, data);
+        public static void DispatchGameEvent(FSMControllerType controllerType, FSMStateType stateType, FSMEventType eventType, object data = null, bool waitNextFrame = true)
+        {
+            if (waitNextFrame)
+            {
+                Instance?.StartCoroutine(Instance?.Coroutine_Internal_DispatchGameEvent_NextFrame(controllerType, stateType, eventType, data));
+            }
+            else
+            {
+                Instance?.Internal_DispatchGameEvent(controllerType, stateType, eventType, data);
+            }
+
+        }
+
+        private IEnumerator Coroutine_Internal_DispatchGameEvent_NextFrame(FSMControllerType controllerType, FSMStateType stateType, FSMEventType eventType, object data = null)
+        {
+            yield return _waitForEndOfFrame;
+            Instance?.Internal_DispatchGameEvent(controllerType, stateType, eventType, data);
+        }
 
         [Button("Test -- Dispatch Event")]
         private void Internal_DispatchGameEvent(FSMControllerType controllerType, FSMStateType stateType, FSMEventType eventType, object data = null)

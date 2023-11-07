@@ -291,7 +291,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">player/player/Player.PNG</key>
+            <key type="filename">player/player/Player_00.PNG</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -300,9 +300,25 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>128,128,256,256</rect>
+                <rect>93,51,185,101</rect>
                 <key>scale9Paddings</key>
-                <rect>128,128,256,256</rect>
+                <rect>93,51,185,101</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">player/player/Player_01.PNG</key>
+            <key type="filename">player/player/Player_02.PNG</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>114,70,227,139</rect>
+                <key>scale9Paddings</key>
+                <rect>114,70,227,139</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

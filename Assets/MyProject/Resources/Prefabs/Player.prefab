@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 6395192783110467458}
   - component: {fileID: 9172530856230941591}
   - component: {fileID: 7683470455240508802}
-  - component: {fileID: 3656718075287630012}
-  - component: {fileID: 5944242224878865484}
   - component: {fileID: 4962950767101219553}
+  - component: {fileID: 8400676300595228613}
+  - component: {fileID: 9047188970826852448}
+  - component: {fileID: 2059455004711085188}
+  - component: {fileID: 810017455234385676}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -52,6 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gunSlot: {fileID: 8902777813865132925}
+  _spriteRenderer: {fileID: 953483764698663506}
 --- !u!114 &7683470455240508802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,41 +67,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 970dbb5fa3702c046855855b04e8af1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controllerType: 0
+  _controllerType: 4
+  _allowAllEvents: 0
   _initialState: 3
   _statesSerialized:
-  - EventType: 1
-    State: {fileID: 3656718075287630012}
-    AllowedEventTypes: 020000000700000008000000
+  - EventType: 5
+    State: {fileID: 8400676300595228613}
+    AllowedEventTypes: 020000000800000007000000
   - EventType: 3
-    State: {fileID: 5944242224878865484}
+    State: {fileID: 810017455234385676}
     AllowedEventTypes: 
-  allowedEventTypes: 
+  - EventType: 1
+    State: {fileID: 9047188970826852448}
+    AllowedEventTypes: 0f0000000600000010000000
+  - EventType: 7
+    State: {fileID: 2059455004711085188}
+    AllowedEventTypes: 11000000120000000f000000
+  allowedEventTypes: 0c0000000b000000
   _lastEventsReceivedIgnoreList: 
---- !u!114 &3656718075287630012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54201477452121253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ba636e14792ee042a1637914c1a609d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5944242224878865484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54201477452121253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4f728dbbb7e65848933133f3b603551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4962950767101219553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +101,54 @@ MonoBehaviour:
   _screenBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 16, y: 29, z: 0}
+--- !u!114 &8400676300595228613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54201477452121253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5487b8fb83ba9f641ac4323d8471002a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9047188970826852448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54201477452121253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba636e14792ee042a1637914c1a609d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2059455004711085188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54201477452121253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3121e14c7ccddee4a9214abae6a06b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &810017455234385676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54201477452121253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f728dbbb7e65848933133f3b603551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4781550999401548624
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,12 +223,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1273961929, guid: 0fed55a4d03313445b17c308e09433e1, type: 3}
+  m_Sprite: {fileID: -1827425897, guid: 0fed55a4d03313445b17c308e09433e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.72, y: 2.04}
+  m_Size: {x: 3.7, y: 2.02}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -235,9 +269,9 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -0.1541183}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5637255}
-    oldSize: {x: 3.72, y: 2.04}
-    newSize: {x: 3.72, y: 2.04}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.7, y: 2.02}
+    newSize: {x: 3.7, y: 2.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

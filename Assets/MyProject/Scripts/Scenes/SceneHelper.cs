@@ -36,13 +36,18 @@ namespace scenes
 
         public static void LoadSceneAsync(SceneType scene, LoadSceneMode mode = LoadSceneMode.Single, bool setAsActive = false, Action callback = null)
         {
+
+            string scenePath = SceneHelperTypeSettingsSO.Instance.GetScenePath(scene);
+
             if (IsSceneLoaded(scene))
             {
                 ELog.LogWarning(ELogType.SCENE, "Cannot load the same scene twice: {0}", scene);
+
+                if (setAsActive) SetSceneAsActive(scenePath);
+                callback?.Invoke();
+
                 return;
             }
-
-            string scenePath = SceneHelperTypeSettingsSO.Instance.GetScenePath(scene);
 
             try
             {
@@ -150,23 +155,39 @@ namespace scenes
         {
             LoadEditorScene(SceneType.APPLICATION);
             LoadEditorScene(SceneType.GAME, OpenSceneMode.Additive);
+            LoadEditorScene(SceneType.MAIN_MENU, OpenSceneMode.Additive);
             SetSceneAsActive(SceneType.GAME);
+            application.ApplicationController.HackedStartupState = fsm.FSMStateType.GAME;
         }
 
         [MenuItem("MyProject/SCENES/MainMenu")]
         private static void LoadScene_MainMenu()
         {
             LoadEditorScene(SceneType.APPLICATION);
+            LoadEditorScene(SceneType.GAME, OpenSceneMode.Additive);
             LoadEditorScene(SceneType.MAIN_MENU, OpenSceneMode.Additive);
             SetSceneAsActive(SceneType.MAIN_MENU);
+            application.ApplicationController.HackedStartupState = fsm.FSMStateType.MENU;
+        }
+
+        [MenuItem("MyProject/SCENES/PlayerSelector")]
+        private static void LoadScene_PlayerSelector()
+        {
+            LoadEditorScene(SceneType.APPLICATION);
+            LoadEditorScene(SceneType.GAME, OpenSceneMode.Additive);
+            LoadEditorScene(SceneType.MAIN_MENU, OpenSceneMode.Additive);
+            SetSceneAsActive(SceneType.GAME);
+            application.ApplicationController.HackedStartupState = fsm.FSMStateType.PLAYER_SELECTOR;
         }
 
         [MenuItem("MyProject/SCENES/PauseMenu")]
         private static void LoadScene_PauseMenu()
         {
             LoadEditorScene(SceneType.APPLICATION);
-            LoadEditorScene(SceneType.PAUSE_MENU, OpenSceneMode.Additive);
-            SetSceneAsActive(SceneType.PAUSE_MENU);
+            LoadEditorScene(SceneType.GAME, OpenSceneMode.Additive);
+            LoadEditorScene(SceneType.MAIN_MENU, OpenSceneMode.Additive);
+            SetSceneAsActive(SceneType.MAIN_MENU);
+            application.ApplicationController.HackedStartupState = fsm.FSMStateType.PAUSED;
         }
 
 

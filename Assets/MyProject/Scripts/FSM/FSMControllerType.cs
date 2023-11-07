@@ -10,5 +10,7 @@ namespace fsm
 		INPUT = 5,
 		GUN = 6,
 		ENEMY = 7,
+		BACKGROUND = 8,
+		MENU = 9,
 }
 }

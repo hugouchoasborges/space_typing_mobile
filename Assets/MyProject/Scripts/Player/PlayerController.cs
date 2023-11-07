@@ -12,6 +12,7 @@ namespace player
 
         [Header("Components")]
         [SerializeField] private Transform _gunSlot;
+        [SerializeField] private SpriteRenderer _spriteRenderer;
 
         // ----------------------------------------------------------------------------------
         // ========================== Initialization ============================
@@ -25,6 +26,16 @@ namespace player
                 gun.transform.SetParent(_gunSlot, false);
                 gun.OnTargetHitCallback = OnTargetHit;
             }
+        }
+
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Skins ============================
+        // ----------------------------------------------------------------------------------
+
+        public void ApplySkin(Sprite skin)
+        {
+            _spriteRenderer.sprite = skin;
         }
 
 

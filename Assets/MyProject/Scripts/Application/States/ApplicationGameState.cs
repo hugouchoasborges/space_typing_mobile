@@ -5,6 +5,12 @@ namespace application
 {
     public class ApplicationGameState : AbstractApplicationState
     {
+        public override void OnStateEnter()
+        {
+            base.OnStateEnter();
+            controller.LoadGame();
+        }
+
         public override void OnGameEventReceived(FSMEventType eventType, object data)
         {
             base.OnGameEventReceived(eventType, data);
@@ -12,7 +18,7 @@ namespace application
             switch (eventType)
             {
                 case FSMEventType.ENEMY_DESTROYED:
-                    applicationController.OnEnemyDestroyed(data as EnemyController);
+                    controller.OnEnemyDestroyed(data as EnemyController);
                     break;
             }
         }
