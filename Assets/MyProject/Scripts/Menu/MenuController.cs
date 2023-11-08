@@ -8,6 +8,7 @@ namespace menu
         [Header("Components")]
         [SerializeField] private GameObject _mainMenu;
         [SerializeField] private GameObject _playerSelector;
+        [SerializeField] private GameObject _gameOver;
 
         // ========================== Main Menu ============================
 
@@ -68,11 +69,41 @@ namespace menu
             fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.PLAYER, fsm.FSMStateType.PLAYER_SELECTOR, fsm.FSMEventType.REQUEST_PLAYER_PREVIOUS_SKIN);
         }
 
+
+        // ========================== Game Over Menu ============================
+
+        [Header("GameOver")]
+        [SerializeField] private Button _gameOverPlayButton;
+        [SerializeField] private Button _gameOverMenuButton;
+
+        public void OpenGameOver()
+        {
+            _gameOver.SetActive(true);
+
+            // Add event listeners
+            _gameOverPlayButton.onClick.AddListener(GoToPlayerSelector);
+            _gameOverMenuButton.onClick.AddListener(GotoMenu);
+        }
+
+        public void CloseGameOver()
+        {
+            _gameOver.SetActive(false);
+
+            // Remvoe event listeners
+            _gameOverPlayButton.onClick.RemoveAllListeners();
+            _gameOverMenuButton.onClick.RemoveAllListeners();
+        }
+
         // ========================== Common ============================
 
         private void GoToPlayerSelector()
         {
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.REQUEST_PLAYER_SELECTOR); ;
+            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.REQUEST_PLAYER_SELECTOR);
+        }
+
+        private void GotoMenu()
+        {
+            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.REQUEST_MAIN_MENU);
         }
 
         private void Play()

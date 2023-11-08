@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 1610442567}
   - component: {fileID: 1610442566}
   - component: {fileID: 1610442573}
+  - component: {fileID: 1610442574}
   m_Layer: 0
   m_Name: ApplicationController
   m_TagString: Untagged
@@ -282,6 +283,9 @@ MonoBehaviour:
     AllowedEventTypes: 
   - EventType: 7
     State: {fileID: 1610442573}
+    AllowedEventTypes: 
+  - EventType: 8
+    State: {fileID: 1610442574}
     AllowedEventTypes: 
   allowedEventTypes: 
   _lastEventsReceivedIgnoreList: 
@@ -388,6 +392,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79b9d174fb6cad244bfac290f56d5895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1610442574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610442562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6074544942ff54640b271f3fc30d10fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2029796081

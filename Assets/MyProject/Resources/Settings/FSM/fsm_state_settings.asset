@@ -21,6 +21,7 @@ MonoBehaviour:
   - GAME
   - PAUSED
   - PLAYER_SELECTOR
+  - GAME_OVER
   cachedEnumTypes:
   - Name: NONE
     Count: 0
@@ -45,5 +46,8 @@ MonoBehaviour:
     Enabled: 1
   - Name: PLAYER_SELECTOR
     Count: 7
+    Enabled: 1
+  - Name: GAME_OVER
+    Count: 8
     Enabled: 1
   EnumScript: {fileID: 11500000, guid: 286b2f33ee34a0e41923ac2f1a4d492f, type: 3}

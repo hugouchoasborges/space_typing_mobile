@@ -16,6 +16,9 @@ namespace fsm
         [SerializeField]
         private bool _allowAllEvents = true;
 
+        [SerializeField]
+        private bool _resetOnDisable = true;
+
 #if UNITY_EDITOR
 
         public string PreviewGUI
@@ -67,12 +70,19 @@ namespace fsm
 
         private void OnDisable()
         {
+            if (_resetOnDisable && _initialized)
+                GoToState(FSMStateType.NONE);
+
             FSM.UpdateStateControllersList();
         }
 
         private void OnEnable()
         {
             FSM.UpdateStateControllersList();
+
+            // If it is already initialized and hasn't an active state
+            if (_initialized && _currentState == null)
+                GoToState(_initialState);
         }
 
         public const int MAX_EVENTS_RECEIVED_VERBOSE = 10;
@@ -105,6 +115,18 @@ namespace fsm
 
         private void Start()
         {
+            Initialize();
+            GoToState(_initialState);
+        }
+
+        private bool _initialized = false;
+
+        private void Initialize()
+        {
+            if (_initialized) return;
+
+            _initialized = true;
+
             // Remove null states
             for (int i = _statesSerialized.Count - 1; i >= 0; i--)
                 if (_statesSerialized[i] == null || _statesSerialized[i].State == null)
@@ -127,22 +149,28 @@ namespace fsm
 
                 _statesCachedReversed[_statesCached[serializedState.EventType]] = serializedState.EventType;
             }
-
-            GoToState(_initialState);
         }
 
         // ----------------------------------------------------------------------------------
         // ========================== State Transition ============================
         // ----------------------------------------------------------------------------------
 
-        private void GoToState(FSMStateType eventType)
+        private void GoToState(FSMStateType stateType)
         {
-            if (!_statesCached.ContainsKey(eventType))
+            if (stateType == FSMStateType.NONE)
             {
-                throw new KeyNotFoundException(string.Format("{0} state not found", eventType));
+                ELog.Log(ELogType.FSM_STATE_TRANSITION, "{0}: Reseting FSM", name);
+                _previousState = _currentState;
+                _currentState = null;
+                return;
             }
 
-            GoToState(_statesCached[eventType]);
+            if (!_statesCached.ContainsKey(stateType))
+            {
+                throw new KeyNotFoundException(string.Format("{0} state not found", stateType));
+            }
+
+            GoToState(_statesCached[stateType]);
         }
 
         private void GoToState(IFSMState newState)

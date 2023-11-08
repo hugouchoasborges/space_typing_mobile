@@ -150,12 +150,17 @@ namespace scenes
         [MenuItem("MyProject/SCENES/Initialization")]
         private static void LoadScene_Initialization() => LoadEditorScene(SceneType.INITIALIZATION);
 
-        [MenuItem("MyProject/SCENES/Game")]
-        private static void LoadScene_Game()
+        private static void LoadScene_Base()
         {
             LoadEditorScene(SceneType.APPLICATION);
             LoadEditorScene(SceneType.GAME, OpenSceneMode.Additive);
             LoadEditorScene(SceneType.MAIN_MENU, OpenSceneMode.Additive);
+        }
+
+        [MenuItem("MyProject/SCENES/Game")]
+        private static void LoadScene_Game()
+        {
+            LoadScene_Base();
             SetSceneAsActive(SceneType.GAME);
             application.ApplicationController.HackedStartupState = fsm.FSMStateType.GAME;
         }
@@ -163,9 +168,7 @@ namespace scenes
         [MenuItem("MyProject/SCENES/MainMenu")]
         private static void LoadScene_MainMenu()
         {
-            LoadEditorScene(SceneType.APPLICATION);
-            LoadEditorScene(SceneType.GAME, OpenSceneMode.Additive);
-            LoadEditorScene(SceneType.MAIN_MENU, OpenSceneMode.Additive);
+            LoadScene_Base();
             SetSceneAsActive(SceneType.MAIN_MENU);
             application.ApplicationController.HackedStartupState = fsm.FSMStateType.MENU;
         }
@@ -173,9 +176,7 @@ namespace scenes
         [MenuItem("MyProject/SCENES/PlayerSelector")]
         private static void LoadScene_PlayerSelector()
         {
-            LoadEditorScene(SceneType.APPLICATION);
-            LoadEditorScene(SceneType.GAME, OpenSceneMode.Additive);
-            LoadEditorScene(SceneType.MAIN_MENU, OpenSceneMode.Additive);
+            LoadScene_Base();
             SetSceneAsActive(SceneType.GAME);
             application.ApplicationController.HackedStartupState = fsm.FSMStateType.PLAYER_SELECTOR;
         }
@@ -183,11 +184,17 @@ namespace scenes
         [MenuItem("MyProject/SCENES/PauseMenu")]
         private static void LoadScene_PauseMenu()
         {
-            LoadEditorScene(SceneType.APPLICATION);
-            LoadEditorScene(SceneType.GAME, OpenSceneMode.Additive);
-            LoadEditorScene(SceneType.MAIN_MENU, OpenSceneMode.Additive);
+            LoadScene_Base();
             SetSceneAsActive(SceneType.MAIN_MENU);
             application.ApplicationController.HackedStartupState = fsm.FSMStateType.PAUSED;
+        }
+
+        [MenuItem("MyProject/SCENES/GameOver")]
+        private static void LoadScene_GameOver()
+        {
+            LoadScene_Base();
+            SetSceneAsActive(SceneType.MAIN_MENU);
+            application.ApplicationController.HackedStartupState = fsm.FSMStateType.GAME_OVER;
         }
 
 

@@ -134,6 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e58ec2ae2839e44bb5e37b4c184bf8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collisionMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &5951691067607132838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controllerType: 7
+  _allowAllEvents: 1
+  _resetOnDisable: 1
   _initialState: 3
   _statesSerialized:
   - EventType: 3

@@ -11,15 +11,28 @@ namespace enemy
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
+            SetCollisionMask(_collisionMask);
         }
 
 
         // ----------------------------------------------------------------------------------
         // ========================== Collision ============================
         // ----------------------------------------------------------------------------------
+        
+        [Header("Collision")]
+        [SerializeField] private LayerMask _collisionMask;
+        private LayerMask _collisionMaskLayer;
+
+        public void SetCollisionMask(LayerMask mask)
+        {
+            _collisionMask = mask;
+            _collisionMaskLayer = (int)Mathf.Log(_collisionMask.value, 2);
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (collision.gameObject.layer != _collisionMaskLayer) return;
+
             OnHit();
         }
 

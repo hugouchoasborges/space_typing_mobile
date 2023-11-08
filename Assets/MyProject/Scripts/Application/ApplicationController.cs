@@ -40,6 +40,11 @@ namespace application
             SceneHelper.LoadSceneAsync(_gameScene, mode: LoadSceneMode.Additive, setAsActive: true, callback: OnGameLoaded);
         }
 
+        public void LoadGameOver()
+        {
+            SceneHelper.LoadSceneAsync(_mainMenuScene, mode: LoadSceneMode.Additive, setAsActive: true, callback: OnGameOverLoaded);
+        }
+
         private void LoadInitializationScene()
         {
             SceneHelper.LoadSceneAsync(_initializationScene, setAsActive: true);
@@ -82,6 +87,12 @@ namespace application
             fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_MAIN_MENU);
         }
 
+        private void OnGameOverLoaded()
+        {
+            _enemySpawner.StopSpawningEnemies();
+
+            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_GAME_OVER);
+        }
 
         // ----------------------------------------------------------------------------------
         // ========================== Player Selector ============================
@@ -122,8 +133,11 @@ namespace application
             // Tells PlayerSpawner to destroy player (pool)
             _playerSpawner.Destroy(player);
 
+            // MEDO: Handle player lives
             // MEDO: Update players points
             // MEDO: Update GUI
+
+            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.APPLICATION, fsm.FSMStateType.ALL, fsm.FSMEventType.REQUEST_GAME_OVER);
         }
 
         // ========================== Player Events ============================

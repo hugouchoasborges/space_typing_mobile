@@ -1,15 +1,14 @@
 using enemy;
 using fsm;
-using player;
 
 namespace application
 {
-    public class ApplicationGameState : AbstractApplicationState
+    public class ApplicationGameOverState : AbstractApplicationState
     {
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-            controller.LoadGame();
+            controller.LoadGameOver();
         }
 
         public override void OnGameEventReceived(FSMEventType eventType, object data)
@@ -22,12 +21,16 @@ namespace application
                     controller.OnEnemyDestroyed(data as EnemyController);
                     break;
 
-                case FSMEventType.REQUEST_GAME_OVER:
-                    GoToState(FSMStateType.GAME_OVER);
+                case FSMEventType.REQUEST_MAIN_MENU:
+                    GoToState(FSMStateType.MENU);
                     break;
 
-                case FSMEventType.PLAYER_DESTROYED:
-                    controller.OnPlayerDestroyed(data as PlayerController);
+                case FSMEventType.REQUEST_PLAYER_SELECTOR:
+                    GoToState(FSMStateType.PLAYER_SELECTOR);
+                    break;
+
+                case FSMEventType.REQUEST_PLAY:
+                    GoToState(FSMStateType.GAME);
                     break;
             }
         }

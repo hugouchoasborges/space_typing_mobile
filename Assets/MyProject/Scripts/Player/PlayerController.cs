@@ -14,6 +14,11 @@ namespace player
         [SerializeField] private Transform _gunSlot;
         [SerializeField] private SpriteRenderer _spriteRenderer;
 
+        private void Awake()
+        {
+            SetCollisionMask(_collisionMask);
+        }
+
         // ----------------------------------------------------------------------------------
         // ========================== Initialization ============================
         // ----------------------------------------------------------------------------------
@@ -43,6 +48,16 @@ namespace player
         // ========================== Callbacks\Events ============================
         // ----------------------------------------------------------------------------------
 
+        [Header("Collision")]
+        [SerializeField] private LayerMask _collisionMask;
+        private LayerMask _collisionMaskLayer;
+
+        public void SetCollisionMask(LayerMask mask)
+        {
+            _collisionMask = mask;
+            _collisionMaskLayer = (int)Mathf.Log(_collisionMask.value, 2);
+        }
+
         private void OnTargetHit(GameObject target)
         {
             // MEDO: Calculate points earned based com a PointSystemSO configuration page
@@ -52,13 +67,19 @@ namespace player
             // Locator.ApplicationController.UpdateGUI();
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.layer != _collisionMaskLayer) return;
+
+            OnPlayerHit();
+        }
+
         private void OnPlayerHit()
         {
             // MEDO: Play Particles
 
             // MEDO: Destroy player
-
-            // MEDO: Show GameOver Screen (Wait a sec before doing this)
+            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.PLAYER_DESTROYED, this);
         }
 
         // ----------------------------------------------------------------------------------

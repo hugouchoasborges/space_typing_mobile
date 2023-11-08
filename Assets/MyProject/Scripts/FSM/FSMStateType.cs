@@ -10,5 +10,6 @@ namespace fsm
 		GAME = 5,
 		PAUSED = 6,
 		PLAYER_SELECTOR = 7,
+		GAME_OVER = 8,
 }
 }

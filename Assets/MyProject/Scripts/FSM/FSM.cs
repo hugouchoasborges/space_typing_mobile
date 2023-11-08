@@ -57,6 +57,7 @@ namespace fsm
         [Button("Update State Controllers")]
         private void Internal_UpdateStateControllersList()
         {
+            // MEDOING: Should this always include inactive??
             StateControllers = FindObjectsOfType<FSMStateController>();
         }
 
