@@ -15,9 +15,8 @@ MonoBehaviour:
   BuildScenesHolder:
   - Scene: Assets/MyProject/Scenes/Initialization.unity
   - Scene: Assets/MyProject/Scenes/Application.unity
-  - Scene: Assets/MyProject/Scenes/MainMenu.unity
   - Scene: Assets/MyProject/Scenes/Game.unity
-  - Scene: Assets/MyProject/Scenes/PauseMenu.unity
+  - Scene: Assets/MyProject/Scenes/Menu.unity
   StandaloneBuild:
     BuildOptions: 8
     BuildRootFromDataPath: Builds/StandaloneWindows64
