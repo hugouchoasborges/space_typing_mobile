@@ -11,18 +11,6 @@ namespace menu
             controller.OpenPlayerSelector();
         }
 
-        public override void OnGameEventReceived(FSMEventType eventType, object data)
-        {
-            base.OnGameEventReceived(eventType, data);
-
-            switch (eventType)
-            {
-                case FSMEventType.ON_APPLICATION_GAME:
-                    GoToState(FSMStateType.GAME);
-                break;
-            }
-        }
-
         public override void OnStateExit()
         {
             base.OnStateExit();

@@ -16,7 +16,9 @@ namespace application
         [SerializeField] private Bounds _destroyArea = new Bounds(Vector3.up * (-5), new Vector3(30, 50, 0));
 
         private PoolController<EnemyController> _queuedEnemies;
-        private List<EnemyController> _activeEnemies;
+        private List<EnemyController> _activeEnemies = new List<EnemyController>();
+
+        public int EnemiesActive => _activeEnemies.Count;
 
         private bool _initialized = false;
 
@@ -26,7 +28,6 @@ namespace application
             _initialized = true;
 
             _queuedEnemies = new PoolController<EnemyController>(prefab: EnemySettingsSO.Instance.EnemyDefault);
-            _activeEnemies = new List<EnemyController>();
         }
 
         // ----------------------------------------------------------------------------------
@@ -54,7 +55,7 @@ namespace application
         public void StartSpawningEnemies()
         {
             StopSpawningEnemies();
-            _spawnDelayedCall = DOTweenDelayedCall.DelayedCall(SpawnEnemy, 1f / _enemiesPerSec, loops: -1, loopType: DG.Tweening.LoopType.Incremental);
+            _spawnDelayedCall = DOTweenDelayedCall.DelayedCall(Spawn, 1f / _enemiesPerSec, loops: -1, loopType: DG.Tweening.LoopType.Incremental);
         }
 
         public void StopSpawningEnemies()
@@ -66,11 +67,25 @@ namespace application
             }
         }
 
+        public void SetMovementActive(bool active)
+        {
+            List<EnemyController> allEnemies = _activeEnemies + _queuedEnemies as List<EnemyController>;
+            for (int i = allEnemies.Count - 1; i >= 0; i--)
+            {
+                SetMovementActive(allEnemies[i], active);
+            }
+        }
+
+        public void SetMovementActive(EnemyController enemy, bool active)
+        {
+            enemy.SetMovementActive(active);
+        }
+
         // ----------------------------------------------------------------------------------
         // ========================== Normal Enemies ============================
         // ----------------------------------------------------------------------------------
 
-        public void SpawnEnemy()
+        public void Spawn()
         {
             EnemyController newEnemy = _queuedEnemies.Dequeue();
             newEnemy.gameObject.SetActive(true);
@@ -82,7 +97,15 @@ namespace application
             _activeEnemies.Add(newEnemy);
         }
 
-        public void DestroyEnemy(EnemyController enemy)
+        public void DestroyAll()
+        {
+            for (int i = _activeEnemies.Count - 1; i >= 0; i--)
+            {
+                Destroy(_activeEnemies[i]);
+            }
+        }
+
+        public void Destroy(EnemyController enemy)
         {
             _activeEnemies.Remove(enemy);
             _queuedEnemies.Enqueue(enemy);
@@ -109,7 +132,7 @@ namespace application
             {
                 if (!_destroyArea.Contains(_activeEnemies[i].transform.position))
                 {
-                    DestroyEnemy(_activeEnemies[i]);
+                    Destroy(_activeEnemies[i]);
                 }
             }
         }

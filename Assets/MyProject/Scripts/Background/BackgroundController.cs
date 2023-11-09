@@ -24,6 +24,8 @@ namespace background
 
         public void PlayStars()
         {
+            if (_starsParticleSystem.isPlaying) return;
+
             _starsParticleSystem.Play();
         }
 
@@ -45,6 +47,8 @@ namespace background
 
         public void PlayMeteors()
         {
+            if (_meteorsParticleSystem.isPlaying) return;
+
             _meteorsParticleSystem.Play();
         }
         public void StopMeteors()

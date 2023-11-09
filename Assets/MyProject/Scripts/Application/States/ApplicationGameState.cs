@@ -29,6 +29,10 @@ namespace application
                 case FSMEventType.PLAYER_DESTROYED:
                     controller.OnPlayerDestroyed(data as PlayerController);
                     break;
+
+                case FSMEventType.REQUEST_PAUSE:
+                    GoToState(FSMStateType.PAUSED);
+                    break;
             }
         }
     }

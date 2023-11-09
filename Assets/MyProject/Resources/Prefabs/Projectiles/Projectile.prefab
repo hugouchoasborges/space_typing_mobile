@@ -5194,6 +5194,7 @@ MonoBehaviour:
   _collisionMask:
     serializedVersion: 2
     m_Bits: 128
+  _particles: {fileID: 1653239658880202289}
   _trailRenderer: {fileID: 3021257305058866427}
 --- !u!70 &5300390323416798329
 CapsuleCollider2D:

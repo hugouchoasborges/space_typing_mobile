@@ -11,6 +11,8 @@ namespace utils
         private Queue<T> _queue;
         private GameObject _prefab;
 
+        public Queue<T> Queue => _queue;
+
         public PoolController() : this(10) { }
         public PoolController(GameObject prefab) : this(10, prefab) { }
 
@@ -94,6 +96,26 @@ namespace utils
             }
 
             return _queue.Dequeue();
+        }
+
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Operator Overloads ============================
+        // ----------------------------------------------------------------------------------
+
+        // Overloading the + operator to add items from IEnumerable to the pool
+        public static IEnumerable<T> operator +(IEnumerable<T> items, PoolController<T> poolController) => poolController + items;
+        public static IEnumerable<T> operator +(PoolController<T> poolController, IEnumerable<T> items)
+        {
+            IEnumerable<T> result = new List<T>();
+
+            foreach (T item in items)
+                ((List<T>)result).Add(item);
+
+            foreach (T item in poolController.Queue)
+                ((List<T>)result).Add(item);
+
+            return result;
         }
     }
 }

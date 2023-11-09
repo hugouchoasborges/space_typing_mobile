@@ -8,6 +8,11 @@ namespace bootstrap
         {
             // Prepare Stuff
 
+#if UNITY_EDITOR
+            // Reset Scene loading hack(Editor Only)
+            application.ApplicationController.HackedStartupState = FSMStateType.NONE;
+#endif
+
             GoToState(FSMStateType.IDLE);
         }
     }

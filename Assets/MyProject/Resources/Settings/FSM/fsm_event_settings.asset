@@ -34,6 +34,8 @@ MonoBehaviour:
   - REQUEST_GAME_OVER
   - ON_APPLICATION_GAME_OVER
   - PLAYER_DESTROYED
+  - REQUEST_PAUSE
+  - REQUEST_RESUME
   cachedEnumTypes:
   - Name: PREPARE_MENU
     Count: 10
@@ -100,5 +102,11 @@ MonoBehaviour:
     Enabled: 1
   - Name: PLAYER_DESTROYED
     Count: 22
+    Enabled: 1
+  - Name: REQUEST_PAUSE
+    Count: 23
+    Enabled: 1
+  - Name: REQUEST_RESUME
+    Count: 24
     Enabled: 1
   EnumScript: {fileID: 11500000, guid: d26dcaf8c86161a45ab77c89bbf019a5, type: 3}

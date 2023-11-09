@@ -160,6 +160,7 @@ namespace fsm
             if (stateType == FSMStateType.NONE)
             {
                 ELog.Log(ELogType.FSM_STATE_TRANSITION, "{0}: Reseting FSM", name);
+                _currentState?.OnStateExit();
                 _previousState = _currentState;
                 _currentState = null;
                 return;

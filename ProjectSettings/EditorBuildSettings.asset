@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/MyProject/Scenes/Initialization.unity
     guid: ec655a9e747212843ab1834823762008
   - enabled: 1
-    path: Assets/MyProject/Scenes/MainMenu.unity
+    path: Assets/MyProject/Scenes/Menu.unity
     guid: 058f707d88e328746ad5a3f0edad5e81
   - enabled: 1
     path: Assets/MyProject/Scenes/PauseMenu.unity

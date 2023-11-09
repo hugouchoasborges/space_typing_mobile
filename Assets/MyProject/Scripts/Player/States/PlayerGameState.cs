@@ -25,8 +25,11 @@ namespace player
                     controller.Shoot();
                     break;
 
-                case FSMEventType.ON_APPLICATION_GAME_OVER:
                 case FSMEventType.ON_APPLICATION_PAUSED:
+                    GoToState(FSMStateType.PAUSED);
+                    break;
+
+                case FSMEventType.ON_APPLICATION_GAME_OVER:
                 case FSMEventType.ON_APPLICATION_MAIN_MENU:
                     GoToState(FSMStateType.IDLE);
                     break;

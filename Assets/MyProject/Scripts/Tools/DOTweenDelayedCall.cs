@@ -112,11 +112,19 @@ namespace tools
                 Sequence.SetLoops(loops, loopType);
         }
 
+        public void SetPaused(bool paused)
+        {
+            if (paused)
+                Sequence.Pause();
+            else
+                Sequence.Play();
+        }
+
         private void OnDelayedCallFinished()
         {
             Callback?.Invoke();
-            
-            if(Loops > 0) Loops--;
+
+            if (Loops > 0) Loops--;
             if (Loops == 0)
                 DOTweenDelayedCall.KillDelayedCall(this);
         }

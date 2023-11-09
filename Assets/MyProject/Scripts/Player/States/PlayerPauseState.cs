@@ -1,16 +1,14 @@
 using fsm;
-using UnityEngine;
 
-namespace menu
+namespace player
 {
-    [RequireComponent(typeof(MenuController))]
-    public class AbstractMenuState : IFSMState
+    public class PlayerPauseState : AbstractPlayerState
     {
-        protected MenuController controller;
-
-        private void Awake()
+        public override void OnStateEnter()
         {
-            controller = GetComponent<MenuController>();
+            base.OnStateEnter();
+
+            controller.OnPaused();
         }
 
         public override void OnGameEventReceived(FSMEventType eventType, object data)
@@ -28,18 +26,18 @@ namespace menu
                     GoToState(FSMStateType.PLAYER_SELECTOR);
                     break;
 
-                case FSMEventType.ON_APPLICATION_MAIN_MENU:
-                    GoToState(FSMStateType.MENU);
-                    break;
-
                 case FSMEventType.ON_APPLICATION_GAME_OVER:
-                    GoToState(FSMStateType.GAME_OVER);
-                    break;
-
-                case FSMEventType.ON_APPLICATION_PAUSED:
-                    GoToState(FSMStateType.PAUSED);
+                case FSMEventType.ON_APPLICATION_MAIN_MENU:
+                    GoToState(FSMStateType.IDLE);
                     break;
             }
+        }
+
+        public override void OnStateExit()
+        {
+            base.OnStateExit();
+
+            controller.OnResumed();
         }
     }
 }

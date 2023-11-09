@@ -8,8 +8,10 @@ namespace application
 {
     public class PlayerSpawner : MonoBehaviour
     {
-        private List<PlayerController> _activePlayers;
+        private List<PlayerController> _activePlayers = new List<PlayerController>();
         private PoolController<PlayerController> _queuedPlayers;
+
+        public int PlayersActive => _activePlayers.Count;
 
         private bool _initialized = false;
 
@@ -18,7 +20,6 @@ namespace application
             if (_initialized) return;
             _initialized = true;
 
-            _activePlayers = new List<PlayerController>();
             _queuedPlayers = new PoolController<PlayerController>(1, prefab: PlayerSettingsSO.Instance.Prefab);
         }
 
@@ -28,7 +29,15 @@ namespace application
             newPlayer.gameObject.SetActive(true);
             newPlayer.transform.SetPositionAndRotation(Vector2.zero, Quaternion.identity);
 
-            _queuedPlayers.Enqueue(newPlayer);
+            _activePlayers.Add(newPlayer);
+        }
+
+        public void DestroyAll()
+        {
+            for (int i = _activePlayers.Count - 1; i >= 0; i--)
+            {
+                Destroy(_activePlayers[i]);
+            }
         }
 
         public void Destroy(PlayerController player)

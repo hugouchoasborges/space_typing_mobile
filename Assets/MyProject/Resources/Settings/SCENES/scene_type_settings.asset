@@ -45,7 +45,7 @@ MonoBehaviour:
   - SceneType: GAME
     Scene: Assets/MyProject/Scenes/Game.unity
   - SceneType: MAIN_MENU
-    Scene: Assets/MyProject/Scenes/MainMenu.unity
+    Scene: Assets/MyProject/Scenes/Menu.unity
   - SceneType: NONE
     Scene: 
   - SceneType: INITIALIZATION

@@ -18,7 +18,7 @@ namespace enemy
         // ----------------------------------------------------------------------------------
         // ========================== Collision ============================
         // ----------------------------------------------------------------------------------
-        
+
         [Header("Collision")]
         [SerializeField] private LayerMask _collisionMask;
         private LayerMask _collisionMaskLayer;
@@ -52,6 +52,10 @@ namespace enemy
         // ========================== Movement ============================
         // ----------------------------------------------------------------------------------
 
+        public void SetMovementActive(bool active)
+        {
+            _rigidbody2D.simulated = active;
+        }
 
         public void SetImpulse(Vector2 direction)
         {

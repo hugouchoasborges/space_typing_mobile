@@ -1,6 +1,8 @@
+using enemy;
 using log;
 using Sirenix.OdinInspector;
 using System;
+using System.Collections.Generic;
 using tools;
 using UnityEngine;
 using utils;
@@ -9,7 +11,8 @@ namespace gun
 {
     public class GunController : MonoBehaviour
     {
-        [ShowInInspector] private PoolController<BulletController> _bullets;
+        [ShowInInspector] private PoolController<BulletController> _queuedBullets;
+        [ShowInInspector] private List<BulletController> _activeBullets;
 
         [Header("Settings")]
         [SerializeField][Range(1f, 20f)] private float _impulse = 5f;
@@ -29,7 +32,8 @@ namespace gun
                 SetBullet(settings.GunSettingsSO.Instance.BulletDefault);
             }
 
-            _bullets = new PoolController<BulletController>(_bullet);
+            _queuedBullets = new PoolController<BulletController>(_bullet);
+            _activeBullets = new List<BulletController>();
         }
 
         /// <summary>
@@ -38,7 +42,7 @@ namespace gun
         public void SetBullet(GameObject bullet)
         {
             _bullet = bullet;
-            _bullets?.UpdatePrefab(_bullet);
+            _queuedBullets?.UpdatePrefab(_bullet);
         }
 
         // ========================== Fire ============================
@@ -52,7 +56,8 @@ namespace gun
             //ELog.Log_CurrentMethod(ELogType.GUN);
 
             // Get Bullet from pool
-            BulletController bullet = _bullets.Dequeue();
+            BulletController bullet = _queuedBullets.Dequeue();
+            _activeBullets.Add(bullet);
 
             //bullet.transform.SetParent(transform, false);
             bullet.transform.SetPositionAndRotation(transform.position, transform.rotation);
@@ -67,7 +72,8 @@ namespace gun
 
         private void OnBulletDestroyed(BulletController bullet)
         {
-            _bullets.Enqueue(bullet);
+            _queuedBullets.Enqueue(bullet);
+            _activeBullets.Remove(bullet);
         }
 
         private void OnFire()
@@ -102,6 +108,33 @@ namespace gun
             }
 
             _fireRateLock = false;
+        }
+
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Pause Control ============================
+        // ----------------------------------------------------------------------------------
+
+        public void OnPaused(bool paused)
+        {
+            List<BulletController> allBullets = _activeBullets + _queuedBullets as List<BulletController>;
+            for (int i = allBullets.Count - 1; i >= 0; i--)
+            {
+                OnPaused(allBullets[i], paused);
+            }
+        }
+
+        public void OnPaused(BulletController bullet, bool paused)
+        {
+            // Stop/Resume bullet movement
+            bullet.SetMovementActive(!paused);
+
+            // Stop/Resume bullet lifecycle
+            bullet.SetLifecycleActive(!paused);
+
+            // Stop/Resume bullet particles and trail
+            bullet.SetParticlesActive(!paused);
+
         }
 
         // ----------------------------------------------------------------------------------

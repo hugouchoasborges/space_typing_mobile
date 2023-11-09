@@ -12,6 +12,7 @@ namespace gun
         private LayerMask _collisionMaskLayer;
 
         [Header("Components")]
+        [SerializeField] private ParticleSystem _particles;
         [SerializeField] private TrailRenderer _trailRenderer;
 
         private Rigidbody2D _rigidbody2D;
@@ -99,6 +100,34 @@ namespace gun
             // Remove callbacks
             _onDestroy = null;
             _onTargetHit = null;
+        }
+
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Pause System ============================
+        // ----------------------------------------------------------------------------------
+
+        public void SetMovementActive(bool active)
+        {
+            _rigidbody2D.simulated = active;
+        }
+
+        public void SetLifecycleActive(bool active)
+        {
+            _lifecycleDelayedCall?.SetPaused(!active);
+        }
+
+        public void SetParticlesActive(bool active)
+        {
+            if (!active)
+            {
+                _particles.Pause();
+            }
+            else
+            {
+                _particles.Play();
+            }
+            // MEDO: Freeze trail
         }
     }
 }

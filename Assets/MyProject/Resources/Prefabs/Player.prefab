@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2059455004711085188}
   - component: {fileID: 810017455234385676}
   - component: {fileID: 3890686033837303408}
+  - component: {fileID: 287835783914109653}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -72,7 +73,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controllerType: 4
-  _allowAllEvents: 0
+  _allowAllEvents: 1
   _resetOnDisable: 1
   _initialState: 3
   _statesSerialized:
@@ -88,8 +89,11 @@ MonoBehaviour:
   - EventType: 7
     State: {fileID: 2059455004711085188}
     AllowedEventTypes: 1100000012000000
+  - EventType: 6
+    State: {fileID: 287835783914109653}
+    AllowedEventTypes: 
   allowedEventTypes: 0c0000000b0000001500000006000000100000000f000000
-  _lastEventsReceivedIgnoreList: 
+  _lastEventsReceivedIgnoreList: 0200000007000000
 --- !u!114 &4962950767101219553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +203,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.7288733, y: 1.6510983}
   m_EdgeRadius: 0
+--- !u!114 &287835783914109653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54201477452121253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8a5150c1f9b1a43a49999df8fbfbcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4781550999401548624
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ namespace application
 
         [Header("Scenes")]
         [SerializeField]
-        private SceneType _mainMenuScene;
+        private SceneType _menuScene;
 
         [SerializeField]
         private SceneType _gameScene;
@@ -27,12 +27,12 @@ namespace application
 
         public void LoadMainMenu()
         {
-            SceneHelper.LoadSceneAsync(_mainMenuScene, mode: LoadSceneMode.Additive, setAsActive: false, callback: OnMainMenuLoaded);
+            SceneHelper.LoadSceneAsync(_menuScene, mode: LoadSceneMode.Additive, setAsActive: false, callback: OnMainMenuLoaded);
         }
 
         public void LoadPlayerSelector()
         {
-            SceneHelper.LoadSceneAsync(_mainMenuScene, mode: LoadSceneMode.Additive, setAsActive: false, callback: OnPlayerSelectorLoaded);
+            SceneHelper.LoadSceneAsync(_menuScene, mode: LoadSceneMode.Additive, setAsActive: false, callback: OnPlayerSelectorLoaded);
         }
 
         public void LoadGame()
@@ -40,9 +40,14 @@ namespace application
             SceneHelper.LoadSceneAsync(_gameScene, mode: LoadSceneMode.Additive, setAsActive: true, callback: OnGameLoaded);
         }
 
+        public void LoadPause()
+        {
+            SceneHelper.LoadSceneAsync(_menuScene, mode: LoadSceneMode.Additive, setAsActive: true, callback: OnPauseLoaded);
+        }
+
         public void LoadGameOver()
         {
-            SceneHelper.LoadSceneAsync(_mainMenuScene, mode: LoadSceneMode.Additive, setAsActive: true, callback: OnGameOverLoaded);
+            SceneHelper.LoadSceneAsync(_menuScene, mode: LoadSceneMode.Additive, setAsActive: true, callback: OnGameOverLoaded);
         }
 
         private void LoadInitializationScene()
@@ -58,8 +63,8 @@ namespace application
 
         private void UnloadAdditionalScenes()
         {
-            if (SceneHelper.IsSceneLoaded(_mainMenuScene))
-                SceneHelper.UnloadSceneAsync(_mainMenuScene);
+            if (SceneHelper.IsSceneLoaded(_menuScene))
+                SceneHelper.UnloadSceneAsync(_menuScene);
 
             if (SceneHelper.IsSceneLoaded(_gameScene))
                 SceneHelper.UnloadSceneAsync(_gameScene);
@@ -84,12 +89,23 @@ namespace application
 
         private void OnMainMenuLoaded()
         {
+            ResetGameScene();
+
             fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_MAIN_MENU);
+        }
+
+        private void OnPauseLoaded()
+        {
+            // Pause enemy spawning
+            _enemySpawner.StopSpawningEnemies();
+            _enemySpawner.SetMovementActive(false);
+
+            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_PAUSED);
         }
 
         private void OnGameOverLoaded()
         {
-            _enemySpawner.StopSpawningEnemies();
+            ResetGameScene();
 
             fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_GAME_OVER);
         }
@@ -110,13 +126,25 @@ namespace application
         // ========================== Game ============================
         // ----------------------------------------------------------------------------------
 
+        public void ResetGameScene()
+        {
+            // Ensure players aren't instantiated
+            _playerSpawner.DestroyAll();
+
+            // Ensure enemies aren't instantiated
+            _enemySpawner.StopSpawningEnemies();
+            _enemySpawner.DestroyAll();
+        }
+
         public void OnGameLoaded()
         {
             _enemySpawner.Initialize();
             _enemySpawner.StartSpawningEnemies();
+            _enemySpawner.SetMovementActive(true);
 
             _playerSpawner.Initialize();
-            _playerSpawner.Spawn();
+            if (_playerSpawner.PlayersActive == 0)
+                _playerSpawner.Spawn();
 
 
             fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_GAME);
@@ -166,7 +194,7 @@ namespace application
         public void OnEnemyDestroyed(EnemyController enemy)
         {
             // Tells EnemySpawn to destroy enemy (pool)
-            _enemySpawner.DestroyEnemy(enemy);
+            _enemySpawner.Destroy(enemy);
 
             // MEDO: Update players points
             // MEDO: Update GUI

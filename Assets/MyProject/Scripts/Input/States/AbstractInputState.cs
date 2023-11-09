@@ -21,18 +21,14 @@ namespace input
             switch (eventType)
             {
                 case FSMEventType.ON_APPLICATION_PAUSED:
-                    OnApplicationPaused(true);
+                    inputController.SetPaused(true);
                     break;
 
+                case FSMEventType.ON_APPLICATION_GAME:
                 case FSMEventType.ON_APPLICATION_RESUMED:
-                    OnApplicationPaused(false);
+                    inputController.SetPaused(false);
                     break;
             }
-        }
-
-        protected void OnApplicationPaused(bool paused)
-        {
-            inputController.SetPaused(paused);
         }
     }
 }

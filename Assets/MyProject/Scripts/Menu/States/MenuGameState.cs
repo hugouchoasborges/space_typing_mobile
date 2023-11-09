@@ -7,18 +7,15 @@ namespace menu
         public override void OnStateEnter()
         {
             base.OnStateEnter();
+
+            controller.OpenGameUI();
         }
 
-        public override void OnGameEventReceived(FSMEventType eventType, object data)
+        public override void OnStateExit()
         {
-            base.OnGameEventReceived(eventType, data);
+            base.OnStateExit();
 
-            switch (eventType)
-            {
-                case FSMEventType.ON_APPLICATION_GAME_OVER:
-                    GoToState(FSMStateType.GAME_OVER);
-                    break;
-            }
+            controller.CloseGameUI();
         }
     }
 }

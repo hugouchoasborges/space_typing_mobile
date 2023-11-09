@@ -55,7 +55,8 @@ namespace player
         {
             if (!_hasSkins) return;
 
-            _currentSkin = (_currentSkin + -1) % _availableSkins.Length;
+            _currentSkin = _currentSkin - 1;
+            if (_currentSkin < 0) _currentSkin = _availableSkins.Length - 1;
             ApplyCurrentSkin();
         }
 

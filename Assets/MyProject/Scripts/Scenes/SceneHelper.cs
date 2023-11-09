@@ -27,7 +27,7 @@ namespace scenes
 
         public static int SceneCount()
         {
-            return SceneManager.sceneCount;
+            return SceneManager.loadedSceneCount;
         }
 
         // ----------------------------------------------------------------------------------
