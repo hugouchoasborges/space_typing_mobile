@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39c647b112767e4bb0d51514ae2bffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainMenuScene: 2
+  _menuScene: 0
   _gameScene: 1
   _initializationScene: 4
   _playerSpawner: {fileID: 1610442572}
@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controllerType: 3
   _allowAllEvents: 1
+  _resetOnDisable: 1
   _initialState: 3
   _statesSerialized:
   - EventType: 3
@@ -364,6 +365,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnArea:
     m_Center: {x: 0, y: 35, z: 0}
+    m_Extent: {x: 20, y: 2, z: 0}
+  _destinationArea:
+    m_Center: {x: 0, y: -35, z: 0}
     m_Extent: {x: 20, y: 2, z: 0}
   _destroyArea:
     m_Center: {x: 0, y: -5.14, z: 0}

@@ -11,7 +11,8 @@ namespace application
     public class EnemySpawner : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField] private Bounds _spawnArea = new Bounds(Vector3.up * 35, new Vector3(20, 2, 0));
+        [SerializeField] private Bounds _spawnArea = new Bounds(Vector3.up * 35, new Vector3(40, 4, 0));
+        [SerializeField] private Bounds _destinationArea = new Bounds(Vector3.down * 35, new Vector3(40, 4, 0));
         private DelayedCall _spawnDelayedCall = null;
         [SerializeField] private Bounds _destroyArea = new Bounds(Vector3.up * (-5), new Vector3(30, 50, 0));
 
@@ -36,11 +37,20 @@ namespace application
 
         public SpawnPoint GetRandomSpawnPoint()
         {
+            Vector2 from = _spawnArea.GetRandomPosition();
+            Vector2 to = _destinationArea.GetRandomPosition();
+            float speed = Random.Range(_enemiesSpeedRange.x, _enemiesSpeedRange.y);
+
             return new SpawnPoint()
             {
                 Position = _spawnArea.GetRandomPosition(),
-                Direction = Vector2.down * Random.Range(_enemiesSpeedRange.x, _enemiesSpeedRange.y)
+                Direction = GetDirectionNormalized(from, to) * speed
             };
+        }
+
+        private Vector2 GetDirectionNormalized(Vector2 from, Vector2 to)
+        {
+            return (to - from).normalized;
         }
 
 
@@ -146,6 +156,9 @@ namespace application
         {
             // Draw Spawn Area
             GizmosExtensions.DrawBounds(_spawnArea, color: Color.green);
+
+            // Draw Destination Area
+            GizmosExtensions.DrawBounds(_destinationArea, color: Color.blue);
 
             // Draw Constrains area
             GizmosExtensions.DrawBounds(_destroyArea, color: Color.red);
