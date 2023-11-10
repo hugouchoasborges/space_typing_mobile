@@ -1,3 +1,4 @@
+using collectable;
 using enemy;
 using player;
 using scenes;
@@ -134,6 +135,9 @@ namespace application
             // Ensure enemies aren't instantiated
             _enemySpawner.StopSpawningEnemies();
             _enemySpawner.DestroyAll();
+
+            // Remove all collectables
+            _collectableSpawner.DestroyAll();
         }
 
         public void OnGameLoaded()
@@ -146,6 +150,7 @@ namespace application
             if (_playerSpawner.PlayersActive == 0)
                 _playerSpawner.Spawn();
 
+            _collectableSpawner.Initialize();
 
             fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_GAME);
         }
@@ -196,8 +201,45 @@ namespace application
             // Tells EnemySpawn to destroy enemy (pool)
             _enemySpawner.Destroy(enemy);
 
+            // MEDOING
+            SpawnCollectables(enemy.transform.position);
+
             // MEDO: Update players points
             // MEDO: Update GUI
         }
+
+
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Collectables ============================
+        // ----------------------------------------------------------------------------------
+
+        [Header("Collectables")]
+        [SerializeField] private CollectableSpawner _collectableSpawner;
+
+        // ========================== Spawning ============================
+
+
+        private void SpawnCollectables(Vector2 position)
+        {
+            _collectableSpawner.Spawn(position);
+        }
+
+
+        // ========================== Collision ============================
+
+        public void OnCollectableCollected(GameObject gObj)
+        {
+            Collectable collectable = gObj.GetComponent<Collectable>();
+
+            if (collectable == null)
+                throw new Exception(string.Format("'{0}' doesn't have a '{1}' component", gObj.name, nameof(Collectable)));
+
+            _collectableSpawner.Destroy(collectable);
+
+            // MEDO: Add points to player
+            // MEDO: Add points to the screen
+        }
+
     }
 }

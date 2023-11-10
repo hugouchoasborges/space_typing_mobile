@@ -10353,6 +10353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controllerType: 8
   _allowAllEvents: 1
+  _resetOnDisable: 1
   _initialState: 1
   _statesSerialized:
   - EventType: 1
@@ -10449,6 +10450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _controllerType: 5
   _allowAllEvents: 1
+  _resetOnDisable: 1
   _initialState: 1
   _statesSerialized:
   - EventType: 1

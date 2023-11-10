@@ -57,9 +57,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gunSlot: {fileID: 8902777813865132925}
   _spriteRenderer: {fileID: 953483764698663506}
-  _collisionMask:
+  _enemyCollisionMask:
     serializedVersion: 2
     m_Bits: 128
+  _collectableCollisionMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &7683470455240508802
 MonoBehaviour:
   m_ObjectHideFlags: 0

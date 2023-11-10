@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using tools;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace gun
     {
         [Header("Settings")]
         [SerializeField] private LayerMask _collisionMask;
-        private LayerMask _collisionMaskLayer;
+        private List<int> _collisionMaskLayers;
 
         [Header("Components")]
         [SerializeField] private ParticleSystem _particles;
@@ -31,7 +32,7 @@ namespace gun
         public void SetCollisionMask(LayerMask mask)
         {
             _collisionMask = mask;
-            _collisionMaskLayer = (int)Mathf.Log(_collisionMask.value, 2);
+            _collisionMaskLayers = _collisionMask.GetMaskIndexes() as List<int>;
         }
 
         public void Fire(float impulse, Action<GameObject> onTargetHit = null, Action<BulletController> onDestroy = null)
@@ -57,7 +58,7 @@ namespace gun
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.layer != _collisionMaskLayer) return;
+            if (!_collisionMaskLayers.Contains(collision.gameObject.layer)) return;
 
             OnHit(collision.gameObject);
         }

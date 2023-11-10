@@ -1,6 +1,7 @@
 using gun;
 using log;
 using System.Collections.Generic;
+using tools;
 using UnityEngine;
 
 namespace player
@@ -16,7 +17,7 @@ namespace player
 
         private void Awake()
         {
-            SetCollisionMask(_collisionMask);
+            SetCollisionMasks(_enemyCollisionMask, _collectableCollisionMask);
         }
 
         // ----------------------------------------------------------------------------------
@@ -49,13 +50,19 @@ namespace player
         // ----------------------------------------------------------------------------------
 
         [Header("Collision")]
-        [SerializeField] private LayerMask _collisionMask;
-        private LayerMask _collisionMaskLayer;
+        [SerializeField] private LayerMask _enemyCollisionMask;
+        private List<int> _enemyCollisionMaskLayers;
 
-        public void SetCollisionMask(LayerMask mask)
+        [SerializeField] private LayerMask _collectableCollisionMask;
+        private List<int> _collectableCollisionMaskLayers;
+
+        public void SetCollisionMasks(LayerMask enemyMask, LayerMask collectableMask)
         {
-            _collisionMask = mask;
-            _collisionMaskLayer = (int)Mathf.Log(_collisionMask.value, 2);
+            _enemyCollisionMask = enemyMask;
+            _enemyCollisionMaskLayers = _enemyCollisionMask.GetMaskIndexes() as List<int>;
+
+            _collectableCollisionMask = collectableMask;
+            _collectableCollisionMaskLayers = _collectableCollisionMask.GetMaskIndexes() as List<int>;
         }
 
         private void OnTargetHit(GameObject target)
@@ -69,9 +76,16 @@ namespace player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.layer != _collisionMaskLayer) return;
+            if (_enemyCollisionMaskLayers.Contains(collision.gameObject.layer))
+            {
+                // Collided with enemy
+                OnPlayerHit();
+            }
+            else if (_collectableCollisionMaskLayers.Contains(collision.gameObject.layer))
+            {
+                OnPlayerCollect(collision.gameObject);
+            }
 
-            OnPlayerHit();
         }
 
         private void OnPlayerHit()
@@ -80,6 +94,11 @@ namespace player
 
             // MEDO: Destroy player
             fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.PLAYER_DESTROYED, this);
+        }
+
+        private void OnPlayerCollect(GameObject gObj)
+        {
+            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.PLAYER_COLLECT, gObj);
         }
 
         // ----------------------------------------------------------------------------------

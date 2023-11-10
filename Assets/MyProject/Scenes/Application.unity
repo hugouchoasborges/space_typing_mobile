@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 1610442564}
   - component: {fileID: 1610442571}
   - component: {fileID: 1610442572}
+  - component: {fileID: 1610442575}
   - component: {fileID: 1610442565}
   - component: {fileID: 1610442570}
   - component: {fileID: 1610442569}
@@ -250,6 +251,7 @@ MonoBehaviour:
   _initializationScene: 4
   _playerSpawner: {fileID: 1610442572}
   _enemySpawner: {fileID: 1610442571}
+  _collectableSpawner: {fileID: 1610442575}
 --- !u!114 &1610442565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +410,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6074544942ff54640b271f3fc30d10fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1610442575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610442562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b228fb52cab7c2f4a844cd7aff5dbc07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2029796081

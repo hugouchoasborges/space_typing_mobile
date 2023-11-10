@@ -2,7 +2,6 @@ namespace fsm
 {
     public enum FSMEventType
     {
-		PREPARE_MENU = 10,
 		NONE = 0,
 		TOUCH_STARTED = 1,
 		TOUCH_MOVED = 2,
@@ -14,6 +13,7 @@ namespace fsm
 		PLAYER_SHOOT = 8,
 		ENEMY_DESTROYED = 9,
 		REQUEST_MAIN_MENU = 13,
+		PREPARE_MENU = 10,
 		ON_APPLICATION_MAIN_MENU = 11,
 		REQUEST_PLAY = 14,
 		ON_APPLICATION_GAME = 15,
@@ -26,5 +26,6 @@ namespace fsm
 		PLAYER_DESTROYED = 22,
 		REQUEST_PAUSE = 23,
 		REQUEST_RESUME = 24,
+		PLAYER_COLLECT = 25,
 }
 }

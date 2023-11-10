@@ -1,4 +1,6 @@
 using log;
+using System.Collections.Generic;
+using tools;
 using UnityEngine;
 
 namespace enemy
@@ -21,17 +23,17 @@ namespace enemy
 
         [Header("Collision")]
         [SerializeField] private LayerMask _collisionMask;
-        private LayerMask _collisionMaskLayer;
+        private List<int> _collisionMaskLayers;
 
         public void SetCollisionMask(LayerMask mask)
         {
             _collisionMask = mask;
-            _collisionMaskLayer = (int)Mathf.Log(_collisionMask.value, 2);
+            _collisionMaskLayers = _collisionMask.GetMaskIndexes() as List<int>;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.layer != _collisionMaskLayer) return;
+            if (!_collisionMaskLayers.Contains(collision.gameObject.layer)) return;
 
             OnHit();
         }

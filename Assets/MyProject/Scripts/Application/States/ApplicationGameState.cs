@@ -33,6 +33,10 @@ namespace application
                 case FSMEventType.REQUEST_PAUSE:
                     GoToState(FSMStateType.PAUSED);
                     break;
+
+                case FSMEventType.PLAYER_COLLECT:
+                    controller.OnCollectableCollected(data as UnityEngine.GameObject);
+                    break;
             }
         }
     }
