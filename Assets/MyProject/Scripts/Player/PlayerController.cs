@@ -93,12 +93,12 @@ namespace player
             // MEDO: Play Particles
 
             // MEDO: Destroy player
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.PLAYER_DESTROYED, this);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.PLAYER_DESTROYED, this);
         }
 
         private void OnPlayerCollect(GameObject gObj)
         {
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.PLAYER_COLLECT, gObj);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.PLAYER_COLLECT, gObj);
         }
 
         // ----------------------------------------------------------------------------------
@@ -116,6 +116,11 @@ namespace player
 
 
         // ========================== Shooting ============================
+
+        public void ActivatePowerUp()
+        {
+            _currentGun?.ActivatePowerUp();
+        }
 
         public void Shoot()
         {

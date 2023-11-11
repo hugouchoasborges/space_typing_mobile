@@ -92,7 +92,7 @@ namespace application
         {
             ResetGameScene();
 
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_MAIN_MENU);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_MAIN_MENU);
         }
 
         private void OnPauseLoaded()
@@ -101,14 +101,14 @@ namespace application
             _enemySpawner.StopSpawningEnemies();
             _enemySpawner.SetMovementActive(false);
 
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_PAUSED);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_PAUSED);
         }
 
         private void OnGameOverLoaded()
         {
             ResetGameScene();
 
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_GAME_OVER);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_GAME_OVER);
         }
 
         // ----------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ namespace application
             _playerSpawner.Initialize();
             _playerSpawner.Spawn();
 
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_PLAYER_SELECTOR);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_PLAYER_SELECTOR);
         }
 
         // ----------------------------------------------------------------------------------
@@ -152,7 +152,7 @@ namespace application
 
             _collectableSpawner.Initialize();
 
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ON_APPLICATION_GAME);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_GAME);
         }
 
 

@@ -37,11 +37,16 @@ namespace gun
 
         public void Fire(float impulse, Action<GameObject> onTargetHit = null, Action<BulletController> onDestroy = null)
         {
+            Fire(impulse, transform.up, onTargetHit: onTargetHit, onDestroy: onDestroy);
+        }
+
+        public void Fire(float impulse, Vector2 direction, Action<GameObject> onTargetHit = null, Action<BulletController> onDestroy = null)
+        {
             _onDestroy = onDestroy;
             _onTargetHit = onTargetHit;
 
             gameObject.SetActive(true);
-            _rigidbody2D.AddForce(transform.up * impulse, ForceMode2D.Impulse);
+            _rigidbody2D.AddForce(direction * impulse, ForceMode2D.Impulse);
 
             OnFire();
         }

@@ -126,6 +126,8 @@ namespace menu
 
         [Header("GAME")]
         [SerializeField] private Button _gamePauseButton;
+        [SerializeField] private Button _powerUpButton;
+        [SerializeField] private Image _powerUpButtonImage;
 
         public void OpenGameUI()
         {
@@ -133,6 +135,7 @@ namespace menu
 
             // Add event listeners
             _gamePauseButton.onClick.AddListener(GoToPause);
+            _powerUpButton.onClick.AddListener(ActivatePowerUp);
         }
 
         public void CloseGameUI()
@@ -141,38 +144,54 @@ namespace menu
 
             // Remove event listeners
             _gamePauseButton.onClick.RemoveAllListeners();
+            _powerUpButton.onClick.RemoveAllListeners();
         }
 
-        public void SetGameUIInteractable(bool interactable)
+
+        // =========== PowerUp ===========
+
+        private void ActivatePowerUp()
         {
-
+            SetPowerUpButtonInteractable(false);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.REQUEST_POWER_UP);
         }
+
+        public void SetPowerUpButtonInteractable(bool interactable)
+        {
+            _powerUpButton.interactable = interactable;
+        }
+
+        public void SetPowerUpButtonLoadPercentage(float fillAmount)
+        {
+            _powerUpButtonImage.fillAmount = fillAmount;
+        }
+
 
         // ========================== Common ============================
 
         private void GoToPlayerSelector()
         {
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.REQUEST_PLAYER_SELECTOR);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.REQUEST_PLAYER_SELECTOR);
         }
 
         private void Resume()
         {
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.REQUEST_RESUME);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.REQUEST_RESUME);
         }
 
         private void GoToPause()
         {
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.REQUEST_PAUSE);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.REQUEST_PAUSE);
         }
 
         private void GotoMenu()
         {
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.REQUEST_MAIN_MENU);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.REQUEST_MAIN_MENU);
         }
 
         private void Play()
         {
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.REQUEST_PLAY);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.REQUEST_PLAY);
         }
     }
 }

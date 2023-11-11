@@ -19,7 +19,7 @@ namespace application
             switch (eventType)
             {
                 case FSMEventType.REQUEST_RESUME:
-                    fsm.FSM.DispatchGameEvent(FSMControllerType.ALL, FSMStateType.ALL, FSMEventType.ON_APPLICATION_RESUMED);
+                    fsm.FSM.DispatchGameEventAll(FSMEventType.ON_APPLICATION_RESUMED);
                     GoToState(FSMStateType.GAME);
                     break;
 

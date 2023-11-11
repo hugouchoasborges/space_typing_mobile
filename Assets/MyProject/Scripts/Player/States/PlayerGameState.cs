@@ -33,6 +33,10 @@ namespace player
                 case FSMEventType.ON_APPLICATION_MAIN_MENU:
                     GoToState(FSMStateType.IDLE);
                     break;
+
+                case FSMEventType.ON_APPLICATION_POWER_UP:
+                    controller.ActivatePowerUp();
+                    break;
             }
         }
     }

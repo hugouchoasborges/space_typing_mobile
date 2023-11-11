@@ -47,7 +47,7 @@ namespace enemy
             // Dispatch event, so:
             // * Points are added to the player
             // * Spawner can recycle this enemy (pool)
-            fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.ALL, fsm.FSMStateType.ALL, fsm.FSMEventType.ENEMY_DESTROYED, this);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ENEMY_DESTROYED, this);
         }
 
         // ----------------------------------------------------------------------------------

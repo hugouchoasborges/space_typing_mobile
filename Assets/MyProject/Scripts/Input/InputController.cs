@@ -70,7 +70,7 @@ namespace input
             TouchInputModel touchInput = new TouchInputModel(GetTouchTargets(position), _startTouchPosition);
             _currentTouchPosition = _startTouchPosition;
 
-            fsm.FSM.DispatchGameEvent(FSMControllerType.ALL, FSMStateType.ALL, FSMEventType.TOUCH_STARTED, touchInput);
+            fsm.FSM.DispatchGameEventAll(FSMEventType.TOUCH_STARTED, touchInput);
         }
 
 
@@ -84,7 +84,7 @@ namespace input
             TouchInputModel touchInput = new TouchInputModel(GetTouchTargets(position), _startTouchPosition, currentPosition: position, delta: delta);
 
             _currentTouchPosition = position;
-            FSM.DispatchGameEvent(FSMControllerType.ALL, FSMStateType.ALL, FSMEventType.TOUCH_MOVED, touchInput);
+            FSM.DispatchGameEventAll(FSMEventType.TOUCH_MOVED, touchInput);
         }
 
         private void OnTouchCanceled(Vector2 screenPosition) => OnTouchEnded(screenPosition);
@@ -96,13 +96,13 @@ namespace input
             SetEndObjectPosition(position);
             TouchInputModel touchInput = new TouchInputModel(GetTouchTargets(position), _startTouchPosition, position);
 
-            FSM.DispatchGameEvent(FSMControllerType.ALL, FSMStateType.ALL, FSMEventType.TOUCH_ENDED, touchInput);
+            FSM.DispatchGameEventAll(FSMEventType.TOUCH_ENDED, touchInput);
             _currentTouchPosition = _startTouchPosition;
 
             if ((_startTouchPosition - position).magnitude < _maxTapDistance)
             {
                 ELog.Log(ELogType.TOUCH, "OnTouchTap: {0}", position);
-                FSM.DispatchGameEvent(FSMControllerType.ALL, FSMStateType.ALL, FSMEventType.TOUCH_TAP, touchInput);
+                FSM.DispatchGameEventAll(FSMEventType.TOUCH_TAP, touchInput);
             }
         }
 

@@ -37,6 +37,10 @@ namespace application
                 case FSMEventType.PLAYER_COLLECT:
                     controller.OnCollectableCollected(data as UnityEngine.GameObject);
                     break;
+
+                case FSMEventType.REQUEST_POWER_UP:
+                    fsm.FSM.DispatchGameEventAll(FSMEventType.ON_APPLICATION_POWER_UP);
+                    break;
             }
         }
     }

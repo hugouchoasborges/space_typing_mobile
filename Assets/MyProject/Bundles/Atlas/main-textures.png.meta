@@ -387,6 +387,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ui-Button_SuperBullet
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 46
+        width: 169
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd143e6405fe4c74ba6799858bfac38f
+      internalID: 1473941342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -410,6 +431,7 @@ TextureImporter:
       player-Player_01: -657618380
       player-Player_02: 2076188006
       projectiles-base-projectile: -514135052
+      ui-Button_SuperBullet: 1473941342
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -45,6 +45,43 @@ namespace gun
             _queuedBullets?.UpdatePrefab(_bullet);
         }
 
+
+        // ========================== Power Ups ============================
+
+        [Header("Power-Up")]
+        private bool _powerUp = false;
+        private const int POWER_UP_MAX_COUNTDOWN = 15;
+        private int _powerUpCountdown = POWER_UP_MAX_COUNTDOWN;
+
+        public void ActivatePowerUp()
+        {
+            if (_powerUp) return;
+
+            _powerUp = true;
+            _powerUpCountdown = POWER_UP_MAX_COUNTDOWN;
+
+            DOTweenDelayedCall.DelayedCall(PowerUpCountDown, 1.0f, loops: -1);
+        }
+
+        private void DeactivatePowerUp()
+        {
+            _powerUp = false;
+            DOTweenDelayedCall.KillDelayedCall(PowerUpCountDown);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_POWER_UP_DISABLED);
+        }
+
+        private void PowerUpCountDown()
+        {
+            _powerUpCountdown--;
+
+            if (_powerUpCountdown <= 0)
+            {
+                DeactivatePowerUp();
+            }
+
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_POWER_UP_COUNTDOWN, (float)_powerUpCountdown / POWER_UP_MAX_COUNTDOWN);
+        }
+
         // ========================== Fire ============================
 
         public void Fire()
@@ -55,13 +92,34 @@ namespace gun
 
             //ELog.Log_CurrentMethod(ELogType.GUN);
 
-            // Get Bullet from pool
-            BulletController bullet = _queuedBullets.Dequeue();
-            _activeBullets.Add(bullet);
+            if (_powerUp)
+            {
+                // Get Bullet from pool
+                BulletController[] bullets = _queuedBullets.Dequeue(3);
+                Vector2[] directions = { transform.up, new Vector2(-.5f, .5f).normalized, new Vector2(.5f, .5f).normalized };
+                _activeBullets.AddRange(bullets);
 
-            //bullet.transform.SetParent(transform, false);
-            bullet.transform.SetPositionAndRotation(transform.position, transform.rotation);
-            bullet.Fire(_impulse / 100f, OnTargetHit, OnBulletDestroyed);
+                for (int i = 0; i < bullets.Length; i++)
+                {
+                    BulletController bullet = bullets[i];
+                    Vector2 direction = directions[i];
+                    Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
+
+                    bullet.transform.SetPositionAndRotation(transform.position, rotation);
+                    bullet.Fire(_impulse / 150f, direction, OnTargetHit, OnBulletDestroyed);
+                }
+            }
+            else
+            {
+                // Get Bullet from pool
+                BulletController bullet = _queuedBullets.Dequeue();
+                _activeBullets.Add(bullet);
+
+                //bullet.transform.SetParent(transform, false);
+                bullet.transform.SetPositionAndRotation(transform.position, transform.rotation);
+                bullet.Fire(_impulse / 100f, OnTargetHit, OnBulletDestroyed);
+            }
+
             OnFire();
         }
 

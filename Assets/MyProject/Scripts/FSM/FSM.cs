@@ -68,6 +68,11 @@ namespace fsm
         private WaitForEndOfFrame _waitForEndOfFrame = new WaitForEndOfFrame();
 
         // Static options
+        public static void DispatchGameEventAll(FSMEventType eventType, object data = null, bool waitNextFrame = true)
+        {
+            DispatchGameEvent(FSMControllerType.ALL, FSMStateType.ALL, eventType, data, waitNextFrame);
+        }
+
         public static void DispatchGameEvent(FSMControllerType controllerType, FSMStateType stateType, FSMEventType eventType, object data = null, bool waitNextFrame = true)
         {
             if (waitNextFrame)

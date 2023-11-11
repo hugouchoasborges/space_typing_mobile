@@ -64,7 +64,7 @@ namespace input
 
             if (x != 0 || y != 0)
             {
-                FSM.DispatchGameEvent(FSMControllerType.ALL, FSMStateType.ALL, FSMEventType.KEYBOARD_MOVED,
+                FSM.DispatchGameEventAll(FSMEventType.KEYBOARD_MOVED,
                     new KeyboardInputModel(x, y, _movementMultiplier * Time.deltaTime));
             }
 
@@ -85,7 +85,7 @@ namespace input
 
         private void ActionShoot()
         {
-            FSM.DispatchGameEvent(FSMControllerType.ALL, FSMStateType.ALL, FSMEventType.PLAYER_SHOOT);
+            FSM.DispatchGameEventAll(FSMEventType.PLAYER_SHOOT);
         }
 
         // ----------------------------------------------------------------------------------

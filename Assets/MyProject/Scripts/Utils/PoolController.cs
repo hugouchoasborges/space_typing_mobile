@@ -87,6 +87,18 @@ namespace utils
             _queue.Enqueue(obj);
         }
 
+        public T[] Dequeue(int count)
+        {
+            List<T> list = new List<T>();
+
+            for (int i = 0; i < count; i++)
+            {
+                list.Add(Dequeue());
+            }
+
+            return list.ToArray();
+        }
+
         public T Dequeue()
         {
             if (_queue.Count == 0)

@@ -306,6 +306,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">UI/ui/Button_SuperBullet.PNG</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>42,42,85,85</rect>
+                <key>scale9Paddings</key>
+                <rect>42,42,85,85</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">player/player/Player_00.PNG</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -346,6 +361,7 @@
             <filename>Enemies/enemies</filename>
             <filename>Background</filename>
             <filename>Items</filename>
+            <filename>UI</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
