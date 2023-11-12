@@ -163,6 +163,9 @@ namespace application
 
             // Reset Powerup
             PlayerPowerUpMultiShoot.Reset();
+
+            _currentPlayerPoints = 0;
+            _currentPlayerKillCount = 0;
         }
 
         public void OnGameLoaded()
@@ -202,6 +205,9 @@ namespace application
 
 
         [Header("Player - Points")]
+        private int _currentPlayerKillCount = 0;
+        public int CurrentPlayerKillCount => _currentPlayerKillCount;
+
         private int _currentPlayerPoints = 0;
         public int CurrentPlayerPoints => _currentPlayerPoints;
 
@@ -235,6 +241,8 @@ namespace application
 
             // MEDO: Update players points
             // MEDO: Update GUI
+            _currentPlayerKillCount++;
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_ENEMY_KILLCOUNT);
         }
 
 

@@ -42,6 +42,7 @@ MonoBehaviour:
   - ON_APPLICATION_POWER_UP_COUNTDOWN
   - ON_APPLICATION_POWER_UP_DISABLED
   - ON_PLAYER_COLLECT
+  - ON_APPLICATION_ENEMY_KILLCOUNT
   cachedEnumTypes:
   - Name: NONE
     Count: 0
@@ -85,6 +86,9 @@ MonoBehaviour:
   - Name: ON_APPLICATION_GAME
     Count: 15
     Enabled: 1
+  - Name: PREPARE_MENU
+    Count: 10
+    Enabled: 0
   - Name: ON_APPLICATION_PLAYER_SELECTOR
     Count: 16
     Enabled: 1
@@ -130,7 +134,7 @@ MonoBehaviour:
   - Name: ON_PLAYER_COLLECT
     Count: 31
     Enabled: 1
-  - Name: PREPARE_MENU
-    Count: 10
-    Enabled: 0
+  - Name: ON_APPLICATION_ENEMY_KILLCOUNT
+    Count: 32
+    Enabled: 1
   EnumScript: {fileID: 11500000, guid: d26dcaf8c86161a45ab77c89bbf019a5, type: 3}

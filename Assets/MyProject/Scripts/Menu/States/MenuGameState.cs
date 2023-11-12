@@ -25,6 +25,10 @@ namespace menu
                 case FSMEventType.ON_PLAYER_COLLECT:
                     controller.UpdatePowerUpButtonLoadPercentage();
                     break;
+
+                case FSMEventType.ON_APPLICATION_ENEMY_KILLCOUNT:
+                    controller.UpdateGamePlayKillCount();
+                    break;
             }
         }
 

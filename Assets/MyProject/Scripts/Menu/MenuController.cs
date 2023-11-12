@@ -1,4 +1,5 @@
 using core;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -103,6 +104,7 @@ namespace menu
         [Header("GameOver")]
         [SerializeField] private Button _gameOverPlayButton;
         [SerializeField] private Button _gameOverMenuButton;
+        [SerializeField] private TextMeshProUGUI _gameOverKillCountText;
 
         public void OpenGameOver()
         {
@@ -129,6 +131,7 @@ namespace menu
         [SerializeField] private Button _gamePauseButton;
         [SerializeField] private Button _powerUpButton;
         [SerializeField] private Image _powerUpButtonImage;
+        [SerializeField] private TextMeshProUGUI _killCountText;
 
         public void OpenGameUI()
         {
@@ -139,6 +142,7 @@ namespace menu
             _powerUpButton.onClick.AddListener(ActivatePowerUp);
 
             UpdatePowerUpButtonLoadPercentage();
+            UpdateGamePlayKillCount();
         }
 
         public void CloseGameUI()
@@ -148,6 +152,16 @@ namespace menu
             // Remove event listeners
             _gamePauseButton.onClick.RemoveAllListeners();
             _powerUpButton.onClick.RemoveAllListeners();
+        }
+
+
+        // ========================== Kill Count ============================
+
+        public void UpdateGamePlayKillCount()
+        {
+            int killCount = Locator.ApplicationController.CurrentPlayerKillCount;
+            _killCountText.text = killCount.ToString();
+            _gameOverKillCountText.text = "Kills: " + killCount.ToString();
         }
 
 
