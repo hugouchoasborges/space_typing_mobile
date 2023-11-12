@@ -1,3 +1,4 @@
+using core;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -136,6 +137,8 @@ namespace menu
             // Add event listeners
             _gamePauseButton.onClick.AddListener(GoToPause);
             _powerUpButton.onClick.AddListener(ActivatePowerUp);
+
+            UpdatePowerUpButtonLoadPercentage();
         }
 
         public void CloseGameUI()
@@ -156,14 +159,35 @@ namespace menu
             fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.REQUEST_POWER_UP);
         }
 
-        public void SetPowerUpButtonInteractable(bool interactable)
+        private void SetPowerUpButtonInteractable(bool interactable)
         {
             _powerUpButton.interactable = interactable;
+        }
+
+        public void AddPowerUpLoadPercentage(int points)
+        {
+            float percFromPoints = _powerUpButtonImage.fillAmount +
+                (points / (float)Locator.ApplicationController.PowerUpMultiShoot.PointsRequired);
+
+            percFromPoints = Mathf.Clamp(percFromPoints, 0, 1);
+            SetPowerUpButtonLoadPercentage(percFromPoints);
+        }
+
+        public void UpdatePowerUpButtonLoadPercentage()
+        {
+            SetPowerUpButtonLoadPercentage(Locator.ApplicationController.PlayerPowerUpMultiShoot.CurrentPercentage);
+        }
+
+        private void SetPowerUpButtonLoadPercentage(int points)
+        {
+            float percFromPoints = points / (float)Locator.ApplicationController.PowerUpMultiShoot.PointsRequired;
+            SetPowerUpButtonLoadPercentage(percFromPoints);
         }
 
         public void SetPowerUpButtonLoadPercentage(float fillAmount)
         {
             _powerUpButtonImage.fillAmount = fillAmount;
+            SetPowerUpButtonInteractable(fillAmount >= 1);
         }
 
 

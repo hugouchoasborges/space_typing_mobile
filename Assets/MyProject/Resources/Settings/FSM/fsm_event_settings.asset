@@ -36,15 +36,13 @@ MonoBehaviour:
   - PLAYER_DESTROYED
   - REQUEST_PAUSE
   - REQUEST_RESUME
-  - PLAYER_COLLECT
+  - REQUEST_PLAYER_COLLECT
   - REQUEST_POWER_UP
   - ON_APPLICATION_POWER_UP
   - ON_APPLICATION_POWER_UP_COUNTDOWN
   - ON_APPLICATION_POWER_UP_DISABLED
+  - ON_PLAYER_COLLECT
   cachedEnumTypes:
-  - Name: PREPARE_MENU
-    Count: 10
-    Enabled: 0
   - Name: NONE
     Count: 0
     Enabled: 1
@@ -114,8 +112,8 @@ MonoBehaviour:
   - Name: REQUEST_RESUME
     Count: 24
     Enabled: 1
-  - Name: PLAYER_COLLECT
-    Count: 25
+  - Name: REQUEST_PLAYER_COLLECT
+    Count: 30
     Enabled: 1
   - Name: REQUEST_POWER_UP
     Count: 26
@@ -129,4 +127,10 @@ MonoBehaviour:
   - Name: ON_APPLICATION_POWER_UP_DISABLED
     Count: 29
     Enabled: 1
+  - Name: ON_PLAYER_COLLECT
+    Count: 31
+    Enabled: 1
+  - Name: PREPARE_MENU
+    Count: 10
+    Enabled: 0
   EnumScript: {fileID: 11500000, guid: d26dcaf8c86161a45ab77c89bbf019a5, type: 3}

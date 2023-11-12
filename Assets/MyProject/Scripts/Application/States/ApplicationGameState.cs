@@ -34,12 +34,16 @@ namespace application
                     GoToState(FSMStateType.PAUSED);
                     break;
 
-                case FSMEventType.PLAYER_COLLECT:
+                case FSMEventType.REQUEST_PLAYER_COLLECT:
                     controller.OnCollectableCollected(data as UnityEngine.GameObject);
                     break;
 
                 case FSMEventType.REQUEST_POWER_UP:
                     fsm.FSM.DispatchGameEventAll(FSMEventType.ON_APPLICATION_POWER_UP);
+                    break;
+
+                case FSMEventType.ON_APPLICATION_POWER_UP_DISABLED:
+                    controller.PlayerPowerUpMultiShoot.Reset();
                     break;
             }
         }

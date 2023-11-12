@@ -1,3 +1,4 @@
+using core;
 using fsm;
 
 namespace menu
@@ -21,8 +22,8 @@ namespace menu
                     controller.SetPowerUpButtonLoadPercentage((float)data);
                     break;
 
-                case FSMEventType.ON_APPLICATION_POWER_UP_DISABLED:
-                    controller.SetPowerUpButtonInteractable(false);
+                case FSMEventType.ON_PLAYER_COLLECT:
+                    controller.UpdatePowerUpButtonLoadPercentage();
                     break;
             }
         }

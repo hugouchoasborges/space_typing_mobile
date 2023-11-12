@@ -1,5 +1,4 @@
 using gun;
-using log;
 using System.Collections.Generic;
 using tools;
 using UnityEngine;
@@ -98,7 +97,7 @@ namespace player
 
         private void OnPlayerCollect(GameObject gObj)
         {
-            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.PLAYER_COLLECT, gObj);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.REQUEST_PLAYER_COLLECT, gObj);
         }
 
         // ----------------------------------------------------------------------------------
@@ -126,7 +125,6 @@ namespace player
         {
             _currentGun?.Fire();
         }
-
 
         // ----------------------------------------------------------------------------------
         // ========================== Pause System ============================

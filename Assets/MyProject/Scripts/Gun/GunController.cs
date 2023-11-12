@@ -1,5 +1,7 @@
+using core;
 using enemy;
 using log;
+using powerup.settings;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -50,15 +52,14 @@ namespace gun
 
         [Header("Power-Up")]
         private bool _powerUp = false;
-        private const int POWER_UP_MAX_COUNTDOWN = 15;
-        private int _powerUpCountdown = POWER_UP_MAX_COUNTDOWN;
+        private int _powerUpCountdown;
 
         public void ActivatePowerUp()
         {
             if (_powerUp) return;
 
             _powerUp = true;
-            _powerUpCountdown = POWER_UP_MAX_COUNTDOWN;
+            _powerUpCountdown = Locator.ApplicationController.PowerUpMultiShoot.DurationSeconds;
 
             DOTweenDelayedCall.DelayedCall(PowerUpCountDown, 1.0f, loops: -1);
         }
@@ -67,6 +68,7 @@ namespace gun
         {
             _powerUp = false;
             DOTweenDelayedCall.KillDelayedCall(PowerUpCountDown);
+
             fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_POWER_UP_DISABLED);
         }
 
@@ -79,7 +81,7 @@ namespace gun
                 DeactivatePowerUp();
             }
 
-            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_POWER_UP_COUNTDOWN, (float)_powerUpCountdown / POWER_UP_MAX_COUNTDOWN);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_POWER_UP_COUNTDOWN, (float)_powerUpCountdown / Locator.ApplicationController.PowerUpMultiShoot.DurationSeconds);
         }
 
         // ========================== Fire ============================

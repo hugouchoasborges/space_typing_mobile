@@ -1,6 +1,8 @@
 using collectable;
+using core;
 using enemy;
 using player;
+using powerup.settings;
 using scenes;
 using System;
 using UnityEngine;
@@ -10,6 +12,26 @@ namespace application
 {
     public class ApplicationController : MonoBehaviour
     {
+
+        private void Awake()
+        {
+            Locator.ApplicationController = this;
+            PlayerPowerUpMultiShoot = new PlayerPowerUpProgress();
+            PlayerPowerUpMultiShoot.CurrentPoints = 0;
+            PlayerPowerUpMultiShoot.PointsRequired = PowerUpMultiShoot.PointsRequired;
+        }
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Common Access ============================
+        // ----------------------------------------------------------------------------------
+
+        // Configurations
+        public PowerUpSettingsSO _powerUpSettings;
+        public PowerUpSettingsSO PowerUpSettings => _powerUpSettings ??= _powerUpSettings = PowerUpSettingsSO.Instance;
+
+        // PowerUps
+        public PowerUpMultiShootData PowerUpMultiShoot => PowerUpSettings.MultiShoot;
+        public PlayerPowerUpProgress PlayerPowerUpMultiShoot;
 
         // ----------------------------------------------------------------------------------
         // ========================== Scene Handling ============================
@@ -138,6 +160,9 @@ namespace application
 
             // Remove all collectables
             _collectableSpawner.DestroyAll();
+
+            // Reset Powerup
+            PlayerPowerUpMultiShoot.Reset();
         }
 
         public void OnGameLoaded()
@@ -175,6 +200,10 @@ namespace application
 
         // ========================== Player Events ============================
 
+
+        [Header("Player - Points")]
+        private int _currentPlayerPoints = 0;
+        public int CurrentPlayerPoints => _currentPlayerPoints;
 
 
         // ========================== Enemy Spawning ============================
@@ -239,7 +268,30 @@ namespace application
 
             // MEDO: Add points to player
             // MEDO: Add points to the screen
+
+            _currentPlayerPoints += collectable.Points;
+            PlayerPowerUpMultiShoot.AddPoints(collectable.Points);
+            fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_PLAYER_COLLECT);
         }
 
+    }
+
+    public class PlayerPowerUpProgress
+    {
+        public float CurrentPercentage => CurrentPoints / (float)PointsRequired;
+        public int CurrentPoints = 0;
+        public int PointsRequired;
+        public bool PowerUp => CurrentPoints >= PointsRequired;
+
+        public void AddPoints(int points)
+        {
+            CurrentPoints += points;
+            CurrentPoints = Mathf.Min(CurrentPoints, PointsRequired);
+        }
+
+        public void Reset()
+        {
+            CurrentPoints = 0;
+        }
     }
 }
