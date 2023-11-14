@@ -59,7 +59,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 953483764698663506}
   _enemyCollisionMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 4224
   _collectableCollisionMask:
     serializedVersion: 2
     m_Bits: 2048

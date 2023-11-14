@@ -4,7 +4,7 @@
 # To import these sprites into your Unity project, download "TexturePackerImporter":
 # https://www.codeandweb.com/texturepacker/unity
 #
-# $TexturePacker:SmartUpdate:49c8f10e2b48d3483217dfce087819b5:7ffc0956def644238ebdf48d7dd61676:b752570f55480fc7f91898b5d7d1a38a$
+# $TexturePacker:SmartUpdate:dca2ca595cf84bf3e6e3425d6ea99d74:3e9b6254bf6842c47e4cee0f765fa094:b752570f55480fc7f91898b5d7d1a38a$
 #
 :format=40300
 :texture=main-textures.png
@@ -16,13 +16,13 @@
 Background-rock_00;384;762;85;82; 0.5;0.5; 0;0;0;0
 Background-rock_01;384;936;120;87; 0.5;0.5; 0;0;0;0
 Background-rock_02;384;846;94;88; 0.5;0.5; 0;0;0;0
-Background-star_00;384;628;56;56; 0.5;0.5; 0;0;0;0
-Enemy01;1;46;169;169; 0.5;0.5; 0;0;0;0
-Enemy02;1;217;199;174; 0.5;0.5; 0;0;0;0
+Background-star_00;373;628;56;56; 0.5;0.5; 0;0;0;0
+Enemy01;202;17;169;169; 0.5;0.5; 0;0;0;0
+Enemy02;1;12;199;174; 0.5;0.5; 0;0;0;0
 guns-DefaultGun;471;812;32;32; 0.5;0.5; 8;8;8;8
 items-Drop_Coin;384;686;75;74; 0.5;0.5; 0;0;0;0
-player-Player_00;1;393;370;202; 0.5;0.5; 0;0;0;0
-player-Player_01;1;811;381;212; 0.5;0.5; 0;0;0;0
-player-Player_02;1;597;381;212; 0.5;0.5; 0;0;0;0
+player-Player_00;1;552;370;202; 0.5;0.5; 0;0;0;0
+player-Player_01;1;188;213;362; 0.5;0.5; 0;0;0;0
+player-Player_02;1;756;381;267; 0.5;0.5; 0;0;0;0
 projectiles-base-projectile;480;856;18;78; 0.5;0.5; 0;0;0;0
-ui-Button_SuperBullet;172;46;169;169; 0.5;0.5; 0;0;0;0
+ui-Button_SuperBullet;216;381;169;169; 0.5;0.5; 0;0;0;0

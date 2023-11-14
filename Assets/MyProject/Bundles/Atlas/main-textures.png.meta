@@ -202,7 +202,7 @@ TextureImporter:
       name: Background-star_00
       rect:
         serializedVersion: 2
-        x: 384
+        x: 373
         y: 628
         width: 56
         height: 56
@@ -223,8 +223,8 @@ TextureImporter:
       name: Enemy01
       rect:
         serializedVersion: 2
-        x: 1
-        y: 46
+        x: 202
+        y: 17
         width: 169
         height: 169
       alignment: 0
@@ -245,7 +245,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 217
+        y: 12
         width: 199
         height: 174
       alignment: 0
@@ -308,7 +308,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 393
+        y: 552
         width: 370
         height: 202
       alignment: 0
@@ -329,9 +329,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 811
-        width: 381
-        height: 212
+        y: 188
+        width: 213
+        height: 362
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,9 +350,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 597
+        y: 756
         width: 381
-        height: 212
+        height: 267
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -391,8 +391,8 @@ TextureImporter:
       name: ui-Button_SuperBullet
       rect:
         serializedVersion: 2
-        x: 172
-        y: 46
+        x: 216
+        y: 381
         width: 169
         height: 169
       alignment: 0
