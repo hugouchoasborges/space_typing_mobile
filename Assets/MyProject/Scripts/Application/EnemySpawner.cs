@@ -11,6 +11,7 @@ namespace application
     public class EnemySpawner : MonoBehaviour
     {
         [Header("Components")]
+        [SerializeField] private GameObject _prefab;
         [SerializeField] private Bounds _spawnArea = new Bounds(Vector3.up * 35, new Vector3(40, 4, 0));
         [SerializeField] private Bounds _destinationArea = new Bounds(Vector3.down * 35, new Vector3(40, 4, 0));
         private DelayedCall _spawnDelayedCall = null;
@@ -28,7 +29,7 @@ namespace application
             if (_initialized) return;
             _initialized = true;
 
-            _queuedEnemies = new PoolController<EnemyController>(prefab: EnemySettingsSO.Instance.EnemyDefault);
+            _queuedEnemies = new PoolController<EnemyController>(prefab: _prefab);
         }
 
         // ----------------------------------------------------------------------------------
@@ -43,7 +44,7 @@ namespace application
 
             return new SpawnPoint()
             {
-                Position = _spawnArea.GetRandomPosition(),
+                Position = from,
                 Direction = GetDirectionNormalized(from, to) * speed
             };
         }

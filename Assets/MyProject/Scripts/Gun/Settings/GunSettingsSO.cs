@@ -20,6 +20,7 @@ namespace gun.settings
 
         [Header("Guns")]
         public GameObject GunDefault;
+        public GameObject EnemyGun;
 
         [Header("Bullets")]
         public GameObject BulletDefault;

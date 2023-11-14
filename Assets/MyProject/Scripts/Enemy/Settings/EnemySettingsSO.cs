@@ -19,6 +19,7 @@ namespace enemy.settings
 
         [Header("Enemies")]
         public GameObject EnemyDefault;
+        public GameObject EnemyShooter;
 
 
 #if UNITY_EDITOR

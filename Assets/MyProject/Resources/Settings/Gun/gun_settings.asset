@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: gun_settings
   m_EditorClassIdentifier: 
   GunDefault: {fileID: 1213791362451289754, guid: 7e06be695d16bec47b09ee13da186798, type: 3}
+  EnemyGun: {fileID: 2249055176366046209, guid: c0b9edcda6aa5d5468a556b195175a8b, type: 3}
   BulletDefault: {fileID: 4358846367375853381, guid: 781b7a4c170fcea4ab9ecf56827f55e4, type: 3}

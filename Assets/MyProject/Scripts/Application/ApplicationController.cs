@@ -121,7 +121,9 @@ namespace application
         {
             // Pause enemy spawning
             _enemySpawner.StopSpawningEnemies();
+            _enemyShootingSpawner.StopSpawningEnemies();
             _enemySpawner.SetMovementActive(false);
+            _enemyShootingSpawner.SetMovementActive(false);
 
             fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_PAUSED);
         }
@@ -156,7 +158,9 @@ namespace application
 
             // Ensure enemies aren't instantiated
             _enemySpawner.StopSpawningEnemies();
+            _enemyShootingSpawner.StopSpawningEnemies();
             _enemySpawner.DestroyAll();
+            _enemyShootingSpawner.DestroyAll();
 
             // Remove all collectables
             _collectableSpawner.DestroyAll();
@@ -171,8 +175,11 @@ namespace application
         public void OnGameLoaded()
         {
             _enemySpawner.Initialize();
+            _enemyShootingSpawner.Initialize();
             _enemySpawner.StartSpawningEnemies();
+            _enemyShootingSpawner.StartSpawningEnemies();
             _enemySpawner.SetMovementActive(true);
+            _enemyShootingSpawner.SetMovementActive(true);
 
             _playerSpawner.Initialize();
             if (_playerSpawner.PlayersActive == 0)
@@ -216,15 +223,18 @@ namespace application
 
         [Header("Enemy")]
         [SerializeField] private EnemySpawner _enemySpawner;
+        [SerializeField] private EnemySpawner _enemyShootingSpawner;
 
         public void StartSpawningEnemies()
         {
             _enemySpawner.StartSpawningEnemies();
+            _enemyShootingSpawner.StartSpawningEnemies();
         }
 
         public void StopSpawningEnemies()
         {
             _enemySpawner.StopSpawningEnemies();
+            _enemyShootingSpawner.StopSpawningEnemies();
         }
 
 
@@ -235,6 +245,7 @@ namespace application
         {
             // Tells EnemySpawn to destroy enemy (pool)
             _enemySpawner.Destroy(enemy);
+            _enemyShootingSpawner.Destroy(enemy);
 
             // MEDOING
             SpawnCollectables(enemy.transform.position);
