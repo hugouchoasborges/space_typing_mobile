@@ -1,6 +1,5 @@
 using core;
 using gun;
-using log;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using tools;
@@ -42,17 +41,21 @@ namespace enemy
         // ========================== Initialization ============================
         // ----------------------------------------------------------------------------------
 
-        public void AddGun(params GunController[] guns)
+        public void AddGun(params GameObject[] gunPrefabs)
         {
             if (!_canHaveGun) return;
 
-            _guns.AddRange(guns);
-            foreach (var gun in guns)
+            List<GunController> newGuns = new List<GunController>();
+
+            foreach (var prefab in gunPrefabs)
             {
-                gun.transform.SetParent(_gunSlot, false);
+                GunController newGun = Instantiate(prefab).GetComponent<GunController>();
+                newGuns.Add(newGun);
+                newGun.transform.SetParent(_gunSlot, false);
             }
 
-            // MEDO: Remove test code
+            _guns.AddRange(newGuns);
+
             StartShooting();
         }
 
@@ -133,6 +136,8 @@ namespace enemy
 
         public void SetImpulse(Vector2 direction)
         {
+            _rigidbody2D.velocity = Vector2.zero;
+            _rigidbody2D.angularVelocity = 0;
             _rigidbody2D.AddForce(direction, ForceMode2D.Impulse);
         }
     }

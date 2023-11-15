@@ -172,8 +172,8 @@ MonoBehaviour:
     m_Center: {x: 0, y: 35, z: 0}
     m_Extent: {x: 31, y: 2, z: 0}
   _destinationArea:
-    m_Center: {x: 0, y: -35, z: 0}
-    m_Extent: {x: 10.1, y: 2, z: 0}
+    m_Center: {x: 0, y: -15, z: 0}
+    m_Extent: {x: 15, y: 2, z: 0}
   _destroyArea:
     m_Center: {x: 0, y: -5.14, z: 0}
     m_Extent: {x: 38.1, y: 50, z: 0}
@@ -595,8 +595,8 @@ MonoBehaviour:
     m_Center: {x: 0, y: 35, z: 0}
     m_Extent: {x: 33.45, y: 2, z: 0}
   _destinationArea:
-    m_Center: {x: 0, y: -35, z: 0}
-    m_Extent: {x: 8, y: 2, z: 0}
+    m_Center: {x: 0, y: -15, z: 0}
+    m_Extent: {x: 15, y: 2, z: 0}
   _destroyArea:
     m_Center: {x: 0, y: -5.14, z: 0}
     m_Extent: {x: 40.2, y: 50, z: 0}
