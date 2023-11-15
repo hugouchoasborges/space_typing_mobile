@@ -1,3 +1,4 @@
+using core;
 using fsm;
 
 namespace application
@@ -10,6 +11,8 @@ namespace application
 
             // Load Pause menu
             controller.LoadPause();
+
+            Locator.ApplicationController.PlayAudioClip(sound.ESoundType.APPLICATION_PAUSED);
         }
 
         public override void OnGameEventReceived(FSMEventType eventType, object data)

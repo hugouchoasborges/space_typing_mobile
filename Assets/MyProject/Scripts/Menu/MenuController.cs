@@ -1,6 +1,7 @@
 using core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace menu
@@ -24,7 +25,7 @@ namespace menu
             _mainMenu.SetActive(true);
 
             // Add Listeners
-            _playbutton.onClick.AddListener(GoToPlayerSelector);
+            _playbutton.onClick.EAddListener(GoToPlayerSelector);
         }
 
         public void CloseMainMenu()
@@ -48,9 +49,9 @@ namespace menu
             _playerSelector.SetActive(true);
 
             // Add Listeners
-            _playerSelectorPlay.onClick.AddListener(Play);
-            _playerSelectorNext.onClick.AddListener(PlayerSelectorNext);
-            _playerSelectorPrevious.onClick.AddListener(PlayerSelectorPrevious);
+            _playerSelectorPlay.onClick.EAddListener(Play);
+            _playerSelectorNext.onClick.EAddListener(PlayerSelectorNext);
+            _playerSelectorPrevious.onClick.EAddListener(PlayerSelectorPrevious);
         }
 
         public void ClosePlayerSelector()
@@ -85,8 +86,8 @@ namespace menu
             _pauseMenu.SetActive(true);
 
             // Add event listeners
-            _pauseResumeButton.onClick.AddListener(Resume);
-            _pauseMenuButton.onClick.AddListener(GotoMenu);
+            _pauseResumeButton.onClick.EAddListener(Resume);
+            _pauseMenuButton.onClick.EAddListener(GotoMenu);
         }
 
 
@@ -111,8 +112,8 @@ namespace menu
             _gameOver.SetActive(true);
 
             // Add event listeners
-            _gameOverPlayButton.onClick.AddListener(GoToPlayerSelector);
-            _gameOverMenuButton.onClick.AddListener(GotoMenu);
+            _gameOverPlayButton.onClick.EAddListener(GoToPlayerSelector);
+            _gameOverMenuButton.onClick.EAddListener(GotoMenu);
         }
 
         public void CloseGameOver()
@@ -138,8 +139,8 @@ namespace menu
             _gameUI.gameObject.SetActive(true);
 
             // Add event listeners
-            _gamePauseButton.onClick.AddListener(GoToPause);
-            _powerUpButton.onClick.AddListener(ActivatePowerUp);
+            _gamePauseButton.onClick.EAddListener(GoToPause);
+            _powerUpButton.onClick.EAddListener(ActivatePowerUp);
 
             UpdatePowerUpButtonLoadPercentage();
             UpdateGamePlayKillCount();
@@ -230,6 +231,15 @@ namespace menu
         private void Play()
         {
             fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.REQUEST_PLAY);
+        }
+    }
+
+    public static class ButtonClickedEventExtensions
+    {
+        public static void EAddListener(this Button.ButtonClickedEvent onClick, UnityAction call)
+        {
+            Locator.ApplicationController.PlayAudioClip(sound.ESoundType.MENU_CLICK);
+            onClick.AddListener(call);
         }
     }
 }

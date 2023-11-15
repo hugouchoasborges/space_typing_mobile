@@ -1,7 +1,5 @@
 using core;
-using enemy;
 using log;
-using powerup.settings;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
@@ -86,11 +84,11 @@ namespace gun
 
         // ========================== Fire ============================
 
-        public void Fire()
+        public bool Fire()
         {
             // Control fire rate
             if (!CanFire())
-                return;
+                return false;
 
             //ELog.Log_CurrentMethod(ELogType.GUN);
 
@@ -123,6 +121,7 @@ namespace gun
             }
 
             OnFire();
+            return true;
         }
 
         private void OnTargetHit(GameObject target)

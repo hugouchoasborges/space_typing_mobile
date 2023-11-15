@@ -1,3 +1,4 @@
+using core;
 using enemy;
 using fsm;
 
@@ -9,6 +10,8 @@ namespace application
         {
             base.OnStateEnter();
             controller.LoadGameOver();
+
+            Locator.ApplicationController.PlayAudioClip(sound.ESoundType.APPLICATION_GAMEOVER);
         }
 
         public override void OnGameEventReceived(FSMEventType eventType, object data)

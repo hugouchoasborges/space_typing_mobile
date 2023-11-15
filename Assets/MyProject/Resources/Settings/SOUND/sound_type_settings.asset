@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ebf593ee0d7354694a4c7b226ea0e2, type: 3}
+  m_Name: sound_type_settings
+  m_EditorClassIdentifier: 
+  enumTypes:
+  - NONE
+  - PLAYER_SHOOT
+  - PLAYER_DEATH
+  - PLAYER_POWERUP
+  - ENEMY_SHOOT
+  - ENEMY_DEATH
+  - MENU_CLICK
+  - APPLICATION_GAME
+  - APPLICATION_MENU
+  - APPLICATION_GAMEOVER
+  - APPLICATION_PAUSED
+  - PLAYER_COLLECT
+  cachedEnumTypes:
+  - Name: NONE
+    Count: 0
+    Enabled: 1
+  - Name: PLAYER_SHOOT
+    Count: 1
+    Enabled: 1
+  - Name: PLAYER_DEATH
+    Count: 2
+    Enabled: 1
+  - Name: PLAYER_POWERUP
+    Count: 3
+    Enabled: 1
+  - Name: ENEMY_SHOOT
+    Count: 4
+    Enabled: 1
+  - Name: ENEMY_DEATH
+    Count: 5
+    Enabled: 1
+  - Name: MENU_CLICK
+    Count: 6
+    Enabled: 1
+  - Name: APPLICATION_GAME
+    Count: 7
+    Enabled: 1
+  - Name: APPLICATION_MENU
+    Count: 8
+    Enabled: 1
+  - Name: APPLICATION_GAMEOVER
+    Count: 9
+    Enabled: 1
+  - Name: APPLICATION_PAUSED
+    Count: 10
+    Enabled: 1
+  - Name: PLAYER_COLLECT
+    Count: 11
+    Enabled: 1
+  EnumScript: {fileID: 11500000, guid: 49234b2d24e3a7a4b9942aed2f336917, type: 3}
+  _entries:
+  - SoundType: NONE
+    AudioClip: {fileID: 0}
+  - SoundType: PLAYER_SHOOT
+    AudioClip: {fileID: 8300000, guid: c0dd0d8980f3d844889443164447dd03, type: 3}
+  - SoundType: PLAYER_DEATH
+    AudioClip: {fileID: 8300000, guid: 9e34b953bb7f0a94fb71ab5fd779844c, type: 3}
+  - SoundType: PLAYER_POWERUP
+    AudioClip: {fileID: 8300000, guid: 3c27e647fbcb73b4782549d28dd1139b, type: 3}
+  - SoundType: ENEMY_SHOOT
+    AudioClip: {fileID: 8300000, guid: 247e7a92796090e41bbf71a73a9314ac, type: 3}
+  - SoundType: ENEMY_DEATH
+    AudioClip: {fileID: 8300000, guid: 895e9c3bcd4459845a5076d8159335f0, type: 3}
+  - SoundType: MENU_CLICK
+    AudioClip: {fileID: 8300000, guid: be16e49702fee6646b174852de76f558, type: 3}
+  - SoundType: APPLICATION_GAME
+    AudioClip: {fileID: 8300000, guid: ce417aa594ece624facc6fad8566d1d9, type: 3}
+  - SoundType: APPLICATION_MENU
+    AudioClip: {fileID: 8300000, guid: be16e49702fee6646b174852de76f558, type: 3}
+  - SoundType: APPLICATION_GAMEOVER
+    AudioClip: {fileID: 8300000, guid: 151ce88fedf81744bb8ba4b1908d6875, type: 3}
+  - SoundType: APPLICATION_PAUSED
+    AudioClip: {fileID: 8300000, guid: be16e49702fee6646b174852de76f558, type: 3}
+  - SoundType: PLAYER_COLLECT
+    AudioClip: {fileID: 8300000, guid: 9369a0b78f73eb64f969b90ebe6b9725, type: 3}

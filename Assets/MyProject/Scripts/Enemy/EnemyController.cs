@@ -1,3 +1,4 @@
+using core;
 using gun;
 using log;
 using Sirenix.OdinInspector;
@@ -82,7 +83,8 @@ namespace enemy
         {
             if (Random.Range(0f, 1f) > _shootProbability.GetRandomFloat()) return;
 
-            _currentGun?.Fire();
+            if (_currentGun != null && _currentGun.Fire())
+                Locator.ApplicationController.PlayAudioClip(sound.ESoundType.ENEMY_SHOOT, volume: .2f);
         }
 
         // ----------------------------------------------------------------------------------
@@ -117,6 +119,7 @@ namespace enemy
             // * Spawner can recycle this enemy (pool)
             fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ENEMY_DESTROYED, this);
             StopShooting();
+            Locator.ApplicationController.PlayAudioClip(sound.ESoundType.ENEMY_DEATH);
         }
 
         // ----------------------------------------------------------------------------------

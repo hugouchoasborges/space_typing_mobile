@@ -25,6 +25,7 @@ MonoBehaviour:
   - POOL
   - BULLET
   - ENEMY
+  - SOUND
   cachedEnumTypes:
   - Name: FSM_DISPATCH_EVENT
     Count: 0
@@ -62,6 +63,9 @@ MonoBehaviour:
   - Name: ENEMY
     Count: 12
     Enabled: 1
+  - Name: SOUND
+    Count: 13
+    Enabled: 1
   EnumScript: {fileID: 11500000, guid: 78b9aa1882d19a04ca59ceb9cc1d3299, type: 3}
   _entries:
   - LogType: FSM_DISPATCH_EVENT
@@ -88,3 +92,5 @@ MonoBehaviour:
     Enabled: 0
   - LogType: ENEMY
     Enabled: 0
+  - LogType: SOUND
+    Enabled: 1

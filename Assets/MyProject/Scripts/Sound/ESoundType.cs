@@ -1,0 +1,18 @@
+namespace sound
+{
+    public enum ESoundType
+    {
+		NONE = 0,
+		PLAYER_SHOOT = 1,
+		PLAYER_DEATH = 2,
+		PLAYER_POWERUP = 3,
+		ENEMY_SHOOT = 4,
+		ENEMY_DEATH = 5,
+		MENU_CLICK = 6,
+		APPLICATION_GAME = 7,
+		APPLICATION_MENU = 8,
+		APPLICATION_GAMEOVER = 9,
+		APPLICATION_PAUSED = 10,
+		PLAYER_COLLECT = 11,
+}
+}

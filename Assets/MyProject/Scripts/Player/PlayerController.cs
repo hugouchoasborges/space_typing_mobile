@@ -1,3 +1,4 @@
+using core;
 using gun;
 using System.Collections.Generic;
 using tools;
@@ -93,11 +94,13 @@ namespace player
 
             // MEDO: Destroy player
             fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.PLAYER_DESTROYED, this);
+            Locator.ApplicationController.PlayAudioClip(sound.ESoundType.PLAYER_DEATH);
         }
 
         private void OnPlayerCollect(GameObject gObj)
         {
             fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.REQUEST_PLAYER_COLLECT, gObj);
+            Locator.ApplicationController.PlayAudioClip(sound.ESoundType.PLAYER_COLLECT);
         }
 
         // ----------------------------------------------------------------------------------
@@ -119,11 +122,13 @@ namespace player
         public void ActivatePowerUp()
         {
             _currentGun?.ActivatePowerUp();
+            Locator.ApplicationController.PlayAudioClip(sound.ESoundType.PLAYER_POWERUP);
         }
 
         public void Shoot()
         {
-            _currentGun?.Fire();
+            if (_currentGun != null && _currentGun.Fire())
+                Locator.ApplicationController.PlayAudioClip(sound.ESoundType.PLAYER_SHOOT);
         }
 
         // ----------------------------------------------------------------------------------

@@ -14,5 +14,6 @@ namespace log
 		POOL = 10,
 		BULLET = 11,
 		ENEMY = 12,
+		SOUND = 13,
 }
 }

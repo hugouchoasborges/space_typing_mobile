@@ -4,6 +4,7 @@ using enemy;
 using player;
 using powerup.settings;
 using scenes;
+using sound;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -146,6 +147,18 @@ namespace application
 
             fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_PLAYER_SELECTOR);
         }
+
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Sound ============================
+        // ----------------------------------------------------------------------------------
+
+        [Header("Sound")]
+        [SerializeField] private SoundController _soundController;
+        public SoundController SoundController => _soundController;
+
+        public void PlayAudioClip(ESoundType soundType, float volume = 1, bool playOneShot = true, bool loop = false) => _soundController.Play(soundType, volume: volume, playOneShot: playOneShot, loop: loop);
+        public void StopAudioClip(ESoundType soundType) => _soundController.Stop(soundType);
 
         // ----------------------------------------------------------------------------------
         // ========================== Game ============================

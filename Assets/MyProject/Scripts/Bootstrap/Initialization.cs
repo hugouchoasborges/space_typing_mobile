@@ -1,4 +1,5 @@
-﻿using scenes;
+﻿using core;
+using scenes;
 using UnityEngine;
 
 namespace bootstrap

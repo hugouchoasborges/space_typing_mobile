@@ -1,11 +1,11 @@
-using scenes;
-
 namespace application
 {
     public class ApplicationIdleState : AbstractApplicationState
     {
         public override void OnStateEnter()
         {
+            controller.PlayAudioClip(sound.ESoundType.APPLICATION_GAME, volume: 0.3f, playOneShot: false, loop: true);
+
 #if UNITY_EDITOR
             // Do not load the initialization if another scene is already loaded
             // Testing behavior

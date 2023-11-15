@@ -60,7 +60,7 @@ namespace tools
                 enumTypes = new List<string>();
 
             if (index < 0)
-                index += entry.Length;
+                index = enumTypes.Count;
 
             if (!enumTypes.Contains(entry))
                 enumTypes.Insert(index, entry);
