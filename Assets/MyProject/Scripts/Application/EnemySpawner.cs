@@ -59,14 +59,36 @@ namespace application
         // ========================== Routines ============================
         // ----------------------------------------------------------------------------------
 
-        [Header("Normal Spawning")]
+        [Header("Spawning")]
+        [SerializeField][MinMaxSlider(0f, 5f, true)] private Vector2 _startDelay = new Vector2(0f, 3f);
         [SerializeField][Range(0.1f, 10f)] private float _enemiesPerSec = 1;
-        [SerializeField][MinMaxSlider(3, 20)] private Vector2 _enemiesSpeedRange = new Vector2(3, 20);
+        [SerializeField][MinMaxSlider(3, 20, true)] private Vector2 _enemiesSpeedRange = new Vector2(3, 20);
+
+        private DelayedCall _startingDelayedCall;
 
         public void StartSpawningEnemies()
         {
+            StopStarting();
+            _startingDelayedCall = DOTweenDelayedCall.DelayedCall(DoStartSpawningEnemies, _startDelay.GetRandomFloat());
+        }
+
+        private void StopStarting()
+        {
+            if (_startingDelayedCall != null)
+            {
+                DOTweenDelayedCall.KillDelayedCall(_startingDelayedCall);
+                _startingDelayedCall = null;
+            }
+        }
+
+        private void DoStartSpawningEnemies()
+        {
+            StopStarting();
             StopSpawningEnemies();
             _spawnDelayedCall = DOTweenDelayedCall.DelayedCall(Spawn, 1f / _enemiesPerSec, loops: -1, loopType: DG.Tweening.LoopType.Incremental);
+
+            // MEDO: Uncomment
+            //StartDifficultyRoutine();
         }
 
         public void StopSpawningEnemies()
@@ -78,18 +100,18 @@ namespace application
             }
         }
 
-        public void SetMovementActive(bool active)
+        public void SetEnemiesActive(bool active)
         {
             List<EnemyController> allEnemies = _activeEnemies + _queuedEnemies as List<EnemyController>;
             for (int i = allEnemies.Count - 1; i >= 0; i--)
             {
-                SetMovementActive(allEnemies[i], active);
+                SetEnemyActive(allEnemies[i], active);
             }
         }
 
-        public void SetMovementActive(EnemyController enemy, bool active)
+        public void SetEnemyActive(EnemyController enemy, bool active)
         {
-            enemy.SetMovementActive(active);
+            enemy.SetActive(active);
         }
 
         // ----------------------------------------------------------------------------------
@@ -106,8 +128,12 @@ namespace application
             newEnemy.SetImpulse(spawnPoint.Direction);
 
             _activeEnemies.Add(newEnemy);
+
+            if (_requestedIncreaseDifficulty)
+                DoIncreaseDifficulty();
         }
 
+        [Button("Destroy All")]
         public void DestroyAll()
         {
             for (int i = _activeEnemies.Count - 1; i >= 0; i--)
@@ -125,9 +151,55 @@ namespace application
         }
 
         // ----------------------------------------------------------------------------------
-        // ========================== Special Enemies ============================
+        // ========================== Difficulty Progression ============================
         // ----------------------------------------------------------------------------------
 
+        [Header("Difficulty Progression")]
+        [SerializeField][MinMaxSlider(.1f, 10f, true)] private Vector2 _enemiesPerSecRange;
+        [SerializeField][Range(0f, 1f)] private float _enemiesPerSecIncreaseRate;
+        private bool _requestedIncreaseDifficulty;
+
+        private DelayedCall _difficultyProgressionDelayedCall;
+
+        private void StartDifficultyRoutine()
+        {
+            if (_difficultyProgressionDelayedCall != null) return;
+
+            _enemiesPerSec = _enemiesPerSecRange.x;
+            _difficultyProgressionDelayedCall = DOTweenDelayedCall.DelayedCall(IncreaseDifficulty, 6f, loops: -1, loopType: DG.Tweening.LoopType.Incremental);
+        }
+
+        private void IncreaseDifficulty()
+        {
+            if (_requestedIncreaseDifficulty) return;
+
+            _enemiesPerSec += _enemiesPerSecIncreaseRate;
+            _enemiesPerSec = Mathf.Clamp(_enemiesPerSec, _enemiesPerSecRange.x, _enemiesPerSecRange.y);
+
+            _requestedIncreaseDifficulty = true;
+        }
+
+        private void DoIncreaseDifficulty()
+        {
+            _requestedIncreaseDifficulty = false;
+            StartSpawningEnemies();
+        }
+
+        public void StopDifficultyRoutine()
+        {
+            if (_difficultyProgressionDelayedCall != null)
+            {
+                DOTweenDelayedCall.KillDelayedCall(_difficultyProgressionDelayedCall);
+                _difficultyProgressionDelayedCall = null;
+            }
+        }
+
+        [Button("Reset Difficulty")]
+        private void ResetDifficulty()
+        {
+            StopDifficultyRoutine();
+            StartDifficultyRoutine();
+        }
 
 
         // ----------------------------------------------------------------------------------
@@ -164,8 +236,28 @@ namespace application
             // Draw Constrains area
             GizmosExtensions.DrawBounds(_destroyArea, color: Color.red);
         }
+
+        private void OnValidate()
+        {
+            StartSpawningEnemies();
+        }
 #endif
 
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Pause System ============================
+        // ----------------------------------------------------------------------------------
+
+        public void SetPaused(bool paused)
+        {
+            // Pause/Resume delayed calls
+            if (_difficultyProgressionDelayedCall != null) _difficultyProgressionDelayedCall.Sequence.timeScale = paused ? 0 : 1;
+            if (_spawnDelayedCall != null) _spawnDelayedCall.Sequence.timeScale = paused ? 0 : 1;
+            if (_startingDelayedCall != null) _startingDelayedCall.Sequence.timeScale = paused ? 0 : 1;
+
+            // Pause enemies
+            SetEnemiesActive(!paused);
+        }
     }
 
     public struct SpawnPoint

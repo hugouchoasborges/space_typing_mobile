@@ -129,9 +129,18 @@ namespace enemy
         // ========================== Movement ============================
         // ----------------------------------------------------------------------------------
 
-        public void SetMovementActive(bool active)
+        public void SetActive(bool active)
         {
+            // Pause/Resume movement
             _rigidbody2D.simulated = active;
+
+            // Pause/Resume guns
+            _currentGun?.OnPaused(!active);
+
+            if (active && gameObject.activeInHierarchy)
+                StartShooting();
+            else
+                StopShooting();
         }
 
         public void SetImpulse(Vector2 direction)

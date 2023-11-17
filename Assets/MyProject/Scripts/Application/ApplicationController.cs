@@ -120,11 +120,9 @@ namespace application
 
         private void OnPauseLoaded()
         {
-            // Pause enemy spawning
-            _enemySpawner.StopSpawningEnemies();
-            _enemyShootingSpawner.StopSpawningEnemies();
-            _enemySpawner.SetMovementActive(false);
-            _enemyShootingSpawner.SetMovementActive(false);
+            // Pause Enemy Spawning
+            _enemySpawner.SetPaused(true);
+            _enemyShootingSpawner.SetPaused(true);
 
             fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_PAUSED);
         }
@@ -170,8 +168,7 @@ namespace application
             _playerSpawner.DestroyAll();
 
             // Ensure enemies aren't instantiated
-            _enemySpawner.StopSpawningEnemies();
-            _enemyShootingSpawner.StopSpawningEnemies();
+            StopSpawningEnemies();
             _enemySpawner.DestroyAll();
             _enemyShootingSpawner.DestroyAll();
 
@@ -189,10 +186,10 @@ namespace application
         {
             _enemySpawner.Initialize();
             _enemyShootingSpawner.Initialize();
-            _enemySpawner.StartSpawningEnemies();
-            _enemyShootingSpawner.StartSpawningEnemies();
-            _enemySpawner.SetMovementActive(true);
-            _enemyShootingSpawner.SetMovementActive(true);
+            StartSpawningEnemies();
+
+            _enemySpawner.SetPaused(false);
+            _enemyShootingSpawner.SetPaused(false);
 
             _playerSpawner.Initialize();
             if (_playerSpawner.PlayersActive == 0)
@@ -248,6 +245,8 @@ namespace application
         {
             _enemySpawner.StopSpawningEnemies();
             _enemyShootingSpawner.StopSpawningEnemies();
+            _enemySpawner.StopDifficultyRoutine();
+            _enemyShootingSpawner.StopDifficultyRoutine();
         }
 
 

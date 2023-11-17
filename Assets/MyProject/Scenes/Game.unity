@@ -10508,6 +10508,9 @@ MonoBehaviour:
   _upKey: 1101000077000000
   _downKey: 1201000073000000
   _shootKey: 20000000
+  _pauseKey: 1b0000000d000000
+  _resumeKey: 72000000
+  _powerUpKey: 70000000
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

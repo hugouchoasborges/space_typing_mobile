@@ -177,8 +177,11 @@ MonoBehaviour:
   _destroyArea:
     m_Center: {x: 0, y: -5.14, z: 0}
     m_Extent: {x: 38.1, y: 50, z: 0}
-  _enemiesPerSec: 0.5
-  _enemiesSpeedRange: {x: 3.4673452, y: 20}
+  _startDelay: {x: 0, y: 3}
+  _enemiesPerSec: 0.2
+  _enemiesSpeedRange: {x: 3, y: 20}
+  _enemiesPerSecRange: {x: 0.2, y: 2}
+  _enemiesPerSecIncreaseRate: 0.05
 --- !u!1 &1078394725
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,8 +603,11 @@ MonoBehaviour:
   _destroyArea:
     m_Center: {x: 0, y: -5.14, z: 0}
     m_Extent: {x: 40.2, y: 50, z: 0}
-  _enemiesPerSec: 0.5
-  _enemiesSpeedRange: {x: 3.4673452, y: 13.787827}
+  _startDelay: {x: 2, y: 5}
+  _enemiesPerSec: 0.2
+  _enemiesSpeedRange: {x: 3, y: 13}
+  _enemiesPerSecRange: {x: 0.2, y: 2}
+  _enemiesPerSecIncreaseRate: 0.05
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
