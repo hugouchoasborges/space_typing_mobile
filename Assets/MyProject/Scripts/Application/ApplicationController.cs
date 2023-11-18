@@ -1,6 +1,7 @@
 using collectable;
 using core;
 using enemy;
+using particles;
 using player;
 using powerup.settings;
 using scenes;
@@ -175,6 +176,9 @@ namespace application
             // Remove all collectables
             _collectableSpawner.DestroyAll();
 
+            // Remove running particles
+            _bulletExplosionSpawner.DestroyAll();
+
             // Reset Powerup
             PlayerPowerUpMultiShoot.Reset();
 
@@ -196,6 +200,7 @@ namespace application
                 _playerSpawner.Spawn();
 
             _collectableSpawner.Initialize();
+            _bulletExplosionSpawner.Initialize();
 
             fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_APPLICATION_GAME);
         }
@@ -211,9 +216,7 @@ namespace application
             // Tells PlayerSpawner to destroy player (pool)
             _playerSpawner.Destroy(player);
 
-            // MEDO: Handle player lives
-            // MEDO: Update players points
-            // MEDO: Update GUI
+            SpawnBulletExplosion(player.transform.position, Vector2.down);
 
             fsm.FSM.DispatchGameEvent(fsm.FSMControllerType.APPLICATION, fsm.FSMStateType.ALL, fsm.FSMEventType.REQUEST_GAME_OVER);
         }
@@ -261,6 +264,7 @@ namespace application
 
             // MEDOING
             SpawnCollectables(enemy.transform.position);
+            SpawnBulletExplosion(enemy.transform.position, Vector2.up);
 
             // MEDO: Update players points
             // MEDO: Update GUI
@@ -305,6 +309,18 @@ namespace application
             fsm.FSM.DispatchGameEventAll(fsm.FSMEventType.ON_PLAYER_COLLECT);
         }
 
+
+        // ----------------------------------------------------------------------------------
+        // ========================== Explosiions ============================
+        // ----------------------------------------------------------------------------------
+
+        [Header("Explosions")]
+        [SerializeField] private BulletExplosionSpawner _bulletExplosionSpawner;
+
+        public void SpawnBulletExplosion(Vector2 position, Vector2 direction)
+        {
+            _bulletExplosionSpawner.Spawn(position, direction);
+        }
     }
 
     public class PlayerPowerUpProgress
