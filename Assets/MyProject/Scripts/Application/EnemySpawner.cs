@@ -87,8 +87,7 @@ namespace application
             StopSpawningEnemies();
             _spawnDelayedCall = DOTweenDelayedCall.DelayedCall(Spawn, 1f / _enemiesPerSec, loops: -1, loopType: DG.Tweening.LoopType.Incremental);
 
-            // MEDO: Uncomment
-            //StartDifficultyRoutine();
+            StartDifficultyRoutine();
         }
 
         public void StopSpawningEnemies()
@@ -211,11 +210,12 @@ namespace application
             if (_activeEnemies == null) return;
 
             // Destroy enemies outside boundaries
-            for (int i = _activeEnemies.Count - 1; i >= 0; i--)
+            EnemyController[] currentEnemies = _activeEnemies.ToArray();
+            for (int i = currentEnemies.Length - 1; i >= 0; i--)
             {
-                if (!_destroyArea.Contains(_activeEnemies[i].transform.position))
+                if (!_destroyArea.Contains(currentEnemies[i].transform.position))
                 {
-                    Destroy(_activeEnemies[i]);
+                    Destroy(currentEnemies[i]);
                 }
             }
         }
