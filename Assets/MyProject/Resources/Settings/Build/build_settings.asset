@@ -20,7 +20,7 @@ MonoBehaviour:
   StandaloneBuild:
     BuildOptions: 8
     BuildRootFromDataPath: Builds/StandaloneWindows64
-    PlayerExectable: myproject.exe
+    PlayerExectable: cs50_space_shooter.exe
     WaitForManagedDebugger: 0
   StandaloneDebugBuild:
     BuildOptions: 269
