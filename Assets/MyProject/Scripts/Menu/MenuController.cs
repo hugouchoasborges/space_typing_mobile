@@ -18,14 +18,16 @@ namespace menu
         // ========================== Main Menu ============================
 
         [Header("Main Menu")]
-        [SerializeField] private Button _playbutton;
+        [SerializeField] private Button _playButton;
+        [SerializeField] private Button _exitButton;
 
         public void OpenMainMenu()
         {
             _mainMenu.SetActive(true);
 
             // Add Listeners
-            _playbutton.onClick.EAddListener(GoToPlayerSelector);
+            _playButton.onClick.EAddListener(GoToPlayerSelector);
+            _exitButton.onClick.EAddListener(ExitGame);
         }
 
         public void CloseMainMenu()
@@ -33,7 +35,17 @@ namespace menu
             _mainMenu.SetActive(false);
 
             // Remove listeners
-            _playbutton.onClick.RemoveAllListeners();
+            _playButton.onClick.RemoveAllListeners();
+            _exitButton.onClick.RemoveAllListeners();
+        }
+
+        private void ExitGame()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false; // Stops the editor play mode
+#else
+            Application.Quit(); // Quits the application in a build
+#endif
         }
 
 
